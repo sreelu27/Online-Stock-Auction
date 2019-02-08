@@ -19,6 +19,7 @@ public abstract class Contract implements IReportStructure
 	private StockFrequency stockFrequency;
 	private StringBuilder contractConstraints = new StringBuilder();
 	String type;  // this is only a GSON library requirement for deserializing
+	boolean paid;
 	
 	public Contract(String type)
 	{
@@ -131,5 +132,15 @@ public abstract class Contract implements IReportStructure
 	public long getContractID()
 	{
 		return contractID;
+	}
+
+	public boolean isPaid() {
+		return paid;
+	}
+
+	public void setPaid(boolean paid) {
+		this.paid = paid;
 	}	
+	
+	
 }
