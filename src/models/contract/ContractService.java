@@ -136,4 +136,15 @@ public class ContractService extends EntityService
 		}
 		return null;
 	}
+	
+	public String getPaidContractsForFarmer(long farmerID)
+	{
+		List<Contract> paidFarmerContracts = new ArrayList<>();
+		for(Contract contract : contracts)
+		{
+			if(contract.getFarmerUserID() == farmerID && contract.isPaid())
+				paidFarmerContracts.add(contract);
+		}
+		return getGson().toJson(paidFarmerContracts);
+	}
 }
