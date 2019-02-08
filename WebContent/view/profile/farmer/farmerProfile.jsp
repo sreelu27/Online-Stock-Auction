@@ -21,6 +21,7 @@
 		<button class="tablinks" onclick="openCity(event, 'Account Details')" id="defaultOpen">Account</button>
 		<button class="tablinks" onclick="openCity(event, 'Add Products')">Add Products</button>
 		<button class="tablinks" onclick="openCity(event, 'Bids')">View Bids</button>
+		<button class="tablinks" onclick="openCity(event, 'Contracts')">View Contracts</button>
 		
 	</div>
 
@@ -41,6 +42,7 @@
 				        <input type="hidden" id="formSubmit" name="formSubmit" value="productStockForm">
 						<select id="product-dropdown" name="product-dropdown" class="input_class"></select><br>
 						<select id="frequency-dropdown" name="frequency-dropdown" class="input_class">
+						  <option value="">---Select---</option>
 						  <option value="DAILY">DAILY</option>
 						  <option value="WEEKLY">WEEKLY</option>
 						  <option value="MONTHLY">MONTHLY</option>
@@ -54,7 +56,7 @@
     </div>
     <form method="post" action="../../../BidsController" id="acceptBidForm"  target="_blank">    
 		<div id="Bids" class="tabcontent">
-			<select id="bids-dropdown" name="bids-dropdown"></select>
+			<select id="bids-dropdown" name="bids-dropdown"></select><br>
 			<input type="button" value="Accept Bid" id="acceptBidButton">
 		</div>
     </form>

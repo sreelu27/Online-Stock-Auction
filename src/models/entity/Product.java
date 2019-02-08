@@ -91,5 +91,14 @@ public class Product implements Notification
 		productListeners.remove( listener );
 	}
 	
+	public void enable() 
+    { 
+        System.out.println("Light is on"); 
+    } 
+    public void disable() 
+    { 
+        System.out.println("Light is off"); 
+    } 
+	
 	
 }

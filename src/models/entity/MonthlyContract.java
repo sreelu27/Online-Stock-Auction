@@ -1,13 +1,19 @@
 package models.entity;
 
-public class MonthlyContract extends Contract
+public class MonthlyContract extends Contract implements Command
 {
-
+	private Farmer farmer;
+	
 	public MonthlyContract(Bid bid)
 	{
 		super("monthlycontract"); // this is only a GSON library requirement for deserializing
 		this.setStockFrequency(StockFrequency.MONTHLY);
 		this.setAgreedBid(bid);
+	
+	}
+	
+	public MonthlyContract(Farmer farmer) {
+		this.farmer=farmer;
 	}
 
 	@Override
@@ -31,6 +37,12 @@ public class MonthlyContract extends Contract
 	@Override
 	public String getRetailerDetails() {
 		return "Retailer ID : "+ getAgreedBid().getRetailerID();
+	}
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		farmer.dispatchMonthly();
 	}
 
 }

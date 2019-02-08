@@ -13,6 +13,6 @@ public class Platinum implements Priority{
 		
 		return priority;
 	}
-	
+		
 	
 }

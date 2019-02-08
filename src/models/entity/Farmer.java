@@ -61,5 +61,22 @@ public class Farmer extends User
 	public String[] getProductsInvolved()
 	{
 		return productsInvolved;
-	}		
+	}	
+	
+	public void dispatchDaily() {
+		System.out.println("Delivery of daily contract is in progress!!!");
+	}
+ 
+	public void dispatchWeekly() {
+		System.out.println("Delivery of weekly contract is in progress!!!");
+	}
+	
+	public void dispatchMonthly() {
+		System.out.println("Delivery of monthly contract is in progress!!!");
+	}
+ 
+	public void dispatchYearly() {
+		System.out.println("Delivery of yearly contract is in progress!!!");
+	}
+	
 }
