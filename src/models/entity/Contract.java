@@ -134,6 +134,7 @@ public abstract class Contract implements IReportStructure
 		return contractID;
 	}
 
+
 	public boolean isPaid() {
 		return paid;
 	}
@@ -143,4 +144,9 @@ public abstract class Contract implements IReportStructure
 	}	
 	
 	
+	public void setContractID( long contractID )
+	{
+		this.contractID = contractID;
+	}		
+
 }

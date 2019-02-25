@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+import models.contract.ContractService;
 import models.entity.Contract;
 import models.entity.EntityService;
 import models.entity.RuntimeTypeAdapterFactory;
@@ -122,6 +123,8 @@ public class PaymentService extends EntityService
 		}
 		return getGson().toJson( bankAccounts );
 	}
+	
+	
 
 	public void loadEntities() throws FileNotFoundException
 	{

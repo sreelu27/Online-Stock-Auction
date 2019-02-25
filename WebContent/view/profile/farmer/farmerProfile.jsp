@@ -35,6 +35,24 @@
 		
 		
 	</div>
+	
+	<div id="Contracts" class="tabcontent">
+		<h3>Paid Contracts</h3>
+		<form method="post" action="../../../FarmerProfileLoaderRequest" id="submitCommandForm">
+		<input type="hidden" id="formSubmit1" name="formSubmit1" value="commandForm">	
+		<select id="frequency-dropdown_1" name="frequency-dropdown_1" class="input_class">
+						  <option value="">---Select---</option>
+						  <option value="DAILY">DAILY</option>
+						  <option value="WEEKLY">WEEKLY</option>
+						  <option value="MONTHLY">MONTHLY</option>
+						  <option value="YEARLY">YEARLY</option>
+						</select><br>
+		<input type="button" value="Show Paid Contracts" id="showProductContracts" class="input_class"/>	
+						
+		</form>
+		<div id="searchResults" style="width: 400px; height:350px; float:left; overflow-y: auto;"></div>
+		
+	</div>
 	<div id="Add Products" class="tabcontent">
 		<div id="submit_stock_div" style="width: 200px; margin-right: 10px; float:left;">
 			    	<h4>Add a product stock</h4>
@@ -60,18 +78,8 @@
 			<input type="button" value="Accept Bid" id="acceptBidButton">
 		</div>
     </form>
-	<div id="Contract" class="tabcontent">
-		<h3>Manage Contracts</h3>
-		<p>sign the contract.</p>
-	</div>
-	<form method="post" action="FarmerProfileLoaderRequest" id="passwordForm">
-	<div id="Change password" class="tabcontent">
-		<h3>Change password</h3>
-		<p>Enter old password:<input type="text" name="old password"></p><br/>
-		<p>Enter new password:<input type="text" name="new password"></p><br/>
-		<input type="button" value="Submit" id="submitPasswordForm">
-	</div>
-	</form>
+	
+	
 	<div class='error' style='display:none'id="notificationText"></div>
   
   <form id="form1" action="${pageContext.request.contextPath}/" method="post">

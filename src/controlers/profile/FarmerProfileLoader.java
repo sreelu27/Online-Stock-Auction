@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import models.contract.ContractService;
 import models.entity.Farmer;
 import models.product.ProductService;
 import models.product.ProductStockService;
@@ -54,6 +55,13 @@ public class FarmerProfileLoader extends HttpServlet {
 		{
 			response.getWriter().append(ProductService.getProductServiceInstance(getServletContext()).getProductsAsJSON());
 					    
+		}
+		else if((event != null) &&  (event.equals("Contracts")) && ("commandForm".equals(request.getParameter("formSubmit1")))) {
+			String frequency1 = request.getParameter("frequency-dropdown_1");
+			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
+			
+			response.getWriter().append(ContractService.getContractServiceInstance(getServletContext()).getPaidContractsForFarmerDispatch(user.getUserID(), frequency1));
+			
 		}
 		else if(event != null &&  event.equals("Change password")) {
 			if(ProfilesService.getProfileServiceInstance(getServletContext()).validPasswordCheck(username, oldPassword)) {

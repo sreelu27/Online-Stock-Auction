@@ -26,6 +26,56 @@ $( document ).ready(function() {
     	submitProductForm.submit();
     });	
     doPoll();
+    var submitCommandForm = $('#submitCommandForm');
+    submitCommandForm.submit(function (e) 
+	{	
+		$.ajax(
+		{
+			type: submitCommandForm.attr('method'),
+			url: submitCommandForm.attr('action'),
+			data: submitCommandForm.serialize(),
+			success: function (data) 
+			{
+				var sortedData = sortByKey(data, 'priority');
+				$('#searchResults').html('');
+				$.each(sortedData,function(key,value)
+                {
+					if( $('#searchResults').is(':empty') ) {
+						$('#searchResults').append(
+						'<div id="result_'+key+'" style="border: 1px solid black;"><form id="placebid_'+key+'" name="placebid_'+key+'" method="post" action="../../../BidsController">'+'Qty : ['+value["quantitiy"]+']<br>'+'Frequency : ['+value["frequency"]+']<br>'+'UnitPrice : ['+value["unitPrice"]+']<br>'+'FarmerID : ['+value["farmerID"]+']<br>'+'ProductStockID : ['+value["productStockID"]+']<br><input type="text" id="retailerPrice'+key+'" name="retailerPrice" placeholder="Your Price" class="input_class"><input type="button" value="Place Bid" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="productStockID" value="'+value["productStockID"]+'"></form></div>');
+					}
+					else
+					{
+						var div=$('<div id="result_'+key+'" style="border: 1px solid black;"><form id="placebid_'+key+'" name="placebid_'+key+'" method="post" action="../../../BidsController">'+'Qty : ['+value["quantitiy"]+']<br>'+'Frequency : ['+value["frequency"]+']<br>'+'UnitPrice : ['+value["unitPrice"]+']<br>'+'FarmerID : ['+value["farmerID"]+']<br>'+'ProductStockID : ['+value["productStockID"]+']<br><input type="text" id="retailerPrice'+key+'" name="retailerPrice" placeholder="Your Price" class="input_class"><input type="button" value="Place Bid" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="productStockID" value="'+value["productStockID"]+'"></form></div>');
+						var sopra=$('#result_'+(key-1));
+						$( sopra ).after( div );
+					}
+					var individualBidForm = $('#placebid_'+key);
+					individualBidForm.submit(function (e) 
+					{	
+						$.ajax(
+						{
+							type: individualBidForm.attr('method'),
+							url: individualBidForm.attr('action'),
+							data: individualBidForm.serialize(),
+							success: function (data) 
+							{
+								alert(data.state);
+							}
+						});		 
+						return false;
+					});
+				    $( "#submitRetailerBid_"+key ).click(function() {
+				    	individualBidForm.submit();
+				    });
+                });
+			}
+		});		 
+		return false;
+	});
+    $( "#showProductContracts" ).click(function() {
+    	submitCommandForm.submit();
+    });
 });
 function openCity(evt, eventName) {
 	
@@ -81,7 +131,27 @@ function openCity(evt, eventName) {
     		                });
     		        
     		    });
-    }	
+    }
+    else if(eventName=="Contracts"){
+    	
+    	$.post('../../../FarmerProfileLoaderRequest',
+    		    {
+    		        tabEvent: eventName
+    		    },
+    		    function(data, status){
+    		       
+    		    	$("#contract-dropdown").html('');
+    		    	 var optionEmpty = $('<option />').val('-1').text('-- Select --');
+    		    	$("#contract-dropdown").append(optionEmpty);
+    		        $.each(data,function(key,value)
+    		                {
+    		        	
+    		                    var option = $('<option />').val(value.contractID).text(value.type);
+    		               $("#contract-dropdown").append(option);
+    		              });
+    		        
+    		    });
+    }
     else if(eventName=="Bids")
 	{
     	$.post('../../../BidsController',

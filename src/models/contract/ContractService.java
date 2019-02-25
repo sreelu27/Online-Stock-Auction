@@ -18,6 +18,7 @@ import models.entity.Contract10PercentDiscount;
 import models.entity.DailyContract;
 import models.entity.EntityService;
 import models.entity.MonthlyContract;
+import models.entity.RandomNumberGenerator;
 import models.entity.Retailer;
 import models.entity.RuntimeTypeAdapterFactory;
 import models.entity.StockFrequency;
@@ -64,7 +65,7 @@ public class ContractService extends EntityService
 		else
 		{
 			contract =  ContractFactory.createContract( frequency,bid);
-		}		
+		}		    
 		return contract;
 	}	
 	
@@ -147,4 +148,24 @@ public class ContractService extends EntityService
 		}
 		return getGson().toJson(paidFarmerContracts);
 	}
+	
+	@SuppressWarnings("unlikely-arg-type")
+	public String getPaidContractsForFarmerDispatch(long farmerID, String frequency)
+	{
+		List<Contract> paidFarmerContracts = new ArrayList<>();
+		
+		
+		for(Contract contract : contracts)
+		{
+			if(contract.getFarmerUserID() == farmerID && contract.isPaid() && contract.getStockFrequency().equals(frequency)) {
+				if(contract.getStockFrequency().equals(frequency)) {
+					paidFarmerContracts.add(contract);
+				}
+					
+				
+			}
+       }
+		return getGson().toJson(paidFarmerContracts);
+	}
 }
+
