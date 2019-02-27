@@ -157,11 +157,8 @@ public class ContractService extends EntityService
 		
 		for(Contract contract : contracts)
 		{
-			if(contract.getFarmerUserID() == farmerID && contract.isPaid() && contract.getStockFrequency().equals(frequency)) {
-				if(contract.getStockFrequency().equals(frequency)) {
-					paidFarmerContracts.add(contract);
-				}
-					
+			if(contract.getFarmerUserID() == farmerID && contract.isPaid() && contract.getStockFrequency().name().equals(frequency)) {
+				paidFarmerContracts.add(contract);
 				
 			}
        }

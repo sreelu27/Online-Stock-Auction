@@ -5,6 +5,7 @@
       "contractID":444001,
       "contractConstraints":"",
       "type":"dailycontract",
+      "paid":true,
       "agreedBid":{
       "productStock":{
          "product":{
@@ -17,6 +18,32 @@
          "productStockID":999001
       },
       "agreedFinalPrice":550000.0,
+      "retailerID":100101,
+      "farmerID":100105,
+      "signedByFarmer":true,
+      "signedByRetailer":false
+   },
+   "stockFrequency":"DAILY"
+   },
+   {
+      "farmerUserID":100105,
+      "retailerUserID":100101,
+      "contractID":444306,
+      "contractConstraints":"",
+      "type":"dailycontract",
+      "paid":true,
+      "agreedBid":{
+      "productStock":{
+         "product":{
+            "name": "Carrot",
+		    "productID": 111001
+         },
+         "quantitiy":1000,
+         "frequency":"DAILY",
+         "unitPrice":26000.0,
+         "productStockID":999001
+      },
+      "agreedFinalPrice":250000.0,
       "retailerID":100101,
       "farmerID":100105,
       "signedByFarmer":true,

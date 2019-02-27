@@ -36,21 +36,21 @@ $( document ).ready(function() {
 			data: submitCommandForm.serialize(),
 			success: function (data) 
 			{
-				var sortedData = sortByKey(data, 'priority');
+				
 				$('#searchResults').html('');
-				$.each(sortedData,function(key,value)
+				$.each(data,function(key,value)
                 {
 					if( $('#searchResults').is(':empty') ) {
 						$('#searchResults').append(
-						'<div id="result_'+key+'" style="border: 1px solid black;"><form id="placebid_'+key+'" name="placebid_'+key+'" method="post" action="../../../BidsController">'+'Qty : ['+value["quantitiy"]+']<br>'+'Frequency : ['+value["frequency"]+']<br>'+'UnitPrice : ['+value["unitPrice"]+']<br>'+'FarmerID : ['+value["farmerID"]+']<br>'+'ProductStockID : ['+value["productStockID"]+']<br><input type="text" id="retailerPrice'+key+'" name="retailerPrice" placeholder="Your Price" class="input_class"><input type="button" value="Place Bid" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="productStockID" value="'+value["productStockID"]+'"></form></div>');
+						'<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../BidsController">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
 					}
 					else
 					{
-						var div=$('<div id="result_'+key+'" style="border: 1px solid black;"><form id="placebid_'+key+'" name="placebid_'+key+'" method="post" action="../../../BidsController">'+'Qty : ['+value["quantitiy"]+']<br>'+'Frequency : ['+value["frequency"]+']<br>'+'UnitPrice : ['+value["unitPrice"]+']<br>'+'FarmerID : ['+value["farmerID"]+']<br>'+'ProductStockID : ['+value["productStockID"]+']<br><input type="text" id="retailerPrice'+key+'" name="retailerPrice" placeholder="Your Price" class="input_class"><input type="button" value="Place Bid" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="productStockID" value="'+value["productStockID"]+'"></form></div>');
+						var div=$('<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../BidsController">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualBidSubmit" value="individualBid"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
 						var sopra=$('#result_'+(key-1));
 						$( sopra ).after( div );
 					}
-					var individualBidForm = $('#placebid_'+key);
+					var individualBidForm = $('#dispatchid_'+key);
 					individualBidForm.submit(function (e) 
 					{	
 						$.ajax(

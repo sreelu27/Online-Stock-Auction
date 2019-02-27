@@ -56,9 +56,9 @@ public class FarmerProfileLoader extends HttpServlet {
 			response.getWriter().append(ProductService.getProductServiceInstance(getServletContext()).getProductsAsJSON());
 					    
 		}
-		else if((event != null) &&  (event.equals("Contracts")) && ("commandForm".equals(request.getParameter("formSubmit1")))) {
+		else if(("commandForm".equals(request.getParameter("formSubmit1")))) {
 			String frequency1 = request.getParameter("frequency-dropdown_1");
-			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
+			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
 			
 			response.getWriter().append(ContractService.getContractServiceInstance(getServletContext()).getPaidContractsForFarmerDispatch(user.getUserID(), frequency1));
 			
