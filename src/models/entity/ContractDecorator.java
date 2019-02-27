@@ -34,4 +34,10 @@ public class ContractDecorator extends Contract
 	public String getRetailerDetails() {
 		return "Retailer ID : "+ contract.getAgreedBid().getRetailerID();
 	}
+
+	@Override
+	public void execute(Farmer farmer)
+	{
+		// jsut do nothing
+	}
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import models.contract.ContractService;
+import models.entity.Command;
 import models.entity.Farmer;
 import models.product.ProductService;
 import models.product.ProductStockService;
@@ -59,8 +60,15 @@ public class FarmerProfileLoader extends HttpServlet {
 		else if(("commandForm".equals(request.getParameter("formSubmit1")))) {
 			String frequency1 = request.getParameter("frequency-dropdown_1");
 			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
-			
 			response.getWriter().append(ContractService.getContractServiceInstance(getServletContext()).getPaidContractsForFarmerDispatch(user.getUserID(), frequency1));
+			
+		}
+		else if(("individualContractDispatch".equals(request.getParameter("individualContractDispatch")))) {
+			String contractID = request.getParameter("contractID");
+			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
+			Command command = ContractService.getContractServiceInstance(getServletContext()).getContractByID( contractID );
+			command.execute(user);
+			
 			
 		}
 		else if(event != null &&  event.equals("Change password")) {

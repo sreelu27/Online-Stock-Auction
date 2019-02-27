@@ -2,17 +2,11 @@ package models.entity;
 
 public class WeeklyContract extends Contract implements Command
 {
-    private Farmer farmer;
-    
-	public WeeklyContract(Bid bid)
+    public WeeklyContract(Bid bid)
 	{
 		super("weeklycontract"); // this is only a GSON library requirement for deserializing
 		this.setStockFrequency(StockFrequency.WEEKLY);
 		this.setAgreedBid(bid);
-	}
-
-	public WeeklyContract(Farmer farmer) {
-		this.farmer=farmer;
 	}
 	
 	@Override
@@ -39,11 +33,8 @@ public class WeeklyContract extends Contract implements Command
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-		farmer.dispatchWeekly();
-		
+	public void execute(Farmer farmer) {
+		farmer.dispatchWeekly();		
 	}
 
 }
