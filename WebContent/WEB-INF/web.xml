@@ -73,7 +73,6 @@
     <servlet-name>NotificationServlet</servlet-name>
     <url-pattern>/NotificationRequest</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>PaymentServlet</servlet-name>
     <servlet-class>controlers.payment.PaymentController</servlet-class>
@@ -81,5 +80,14 @@
   <servlet-mapping>
     <servlet-name>PaymentServlet</servlet-name>
     <url-pattern>/PaymentRequest</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PaymentGatewayConnector</servlet-name>
+    <servlet-class>controlers.payment.PaymetGatewayIntegrator</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaymentGatewayConnector</servlet-name>
+    <url-pattern>/SendPaymentToGateway</url-pattern>
   </servlet-mapping>
 </web-app>

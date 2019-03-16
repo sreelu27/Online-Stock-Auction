@@ -14,37 +14,41 @@ import models.profile.ProfilesService;
  * Servlet implementation class Register
  */
 @WebServlet("/RegisterRetailer")
-public class RegisterRetailer extends HttpServlet {
+public class RegisterRetailer extends HttpServlet
+{
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RegisterRetailer() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public RegisterRetailer()
+	{
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+	{
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append( "Served at: " ).append( request.getContextPath() );
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		String business_name = request.getParameter("business_name");
-		String business_address = request.getParameter("business_address");
-		String business_tel = request.getParameter("business_tel");
-		String business_fax = request.getParameter("business_fax");
-		response.setContentType("application/json");
-		response.getWriter().append(ProfilesService.getProfileServiceInstance(getServletContext()).addRetailerProfile( username, password, business_name, business_address, business_fax, business_tel ));
+	protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException
+	{
+		String username = request.getParameter( "username" );
+		String password = request.getParameter( "password" );
+		String business_name = request.getParameter( "business_name" );
+		String business_address = request.getParameter( "business_address" );
+		String business_tel = request.getParameter( "business_tel" );
+		String business_fax = request.getParameter( "business_fax" );
+		response.setContentType( "application/json" );
+		response.getWriter().append( ProfilesService.getProfileServiceInstance( getServletContext() ).addRetailerProfile( username, password, business_name, business_address, business_fax, business_tel ) );
 	}
 
 }
