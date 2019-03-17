@@ -6,7 +6,7 @@ import org.omg.PortableInterceptor.ORBInitializer;
 
 public class InterceptorORBInitializer extends LocalObject implements ORBInitializer
 {
-	public static CustomInterceptor interceptor;
+	public static CustomClientInterceptor interceptor;
 
 	public String name()
 	{
@@ -17,7 +17,7 @@ public class InterceptorORBInitializer extends LocalObject implements ORBInitial
 	{
 		try
 		{
-			interceptor = new CustomInterceptor();
+			interceptor = new CustomClientInterceptor();
 			info.add_client_request_interceptor( interceptor );
 			//info.add_server_request_interceptor( interceptor );
 		}

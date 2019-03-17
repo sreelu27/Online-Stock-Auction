@@ -6,7 +6,7 @@ import org.omg.PortableInterceptor.RequestInfo;
 import org.omg.PortableInterceptor.ServerRequestInfo;
 import org.omg.PortableInterceptor.ServerRequestInterceptor;
 
-public class CustomInterceptor extends org.omg.CORBA.LocalObject implements ClientRequestInterceptor
+public class CustomClientInterceptor extends org.omg.CORBA.LocalObject implements ClientRequestInterceptor
 {
 	public String name()
 	{
