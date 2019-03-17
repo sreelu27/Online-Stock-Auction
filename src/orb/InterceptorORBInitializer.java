@@ -1,4 +1,4 @@
-package orb.util;
+package orb;
 
 import org.omg.CORBA.LocalObject;
 import org.omg.PortableInterceptor.ORBInitInfo;

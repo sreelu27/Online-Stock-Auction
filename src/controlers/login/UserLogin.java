@@ -74,7 +74,7 @@ public class UserLogin extends HttpServlet {
 		{
 			//-ORBInitialPort 1050 -ORBInitialHost localhost
 			Properties p = new Properties();
-			p.put("org.omg.PortableInterceptor.ORBInitializerClass.orb.util.InterceptorORBInitializer", "");
+			p.put("org.omg.PortableInterceptor.ORBInitializerClass.orb.InterceptorORBInitializer", "");
 			//ORB orb = ORB.init(args, p);
 			
 			String[] orbArgs = { "-ORBInitialHost", "localhost", "-ORBInitialPort", "1050" };

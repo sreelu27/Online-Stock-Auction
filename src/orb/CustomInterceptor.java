@@ -1,4 +1,4 @@
-package orb.util;
+package orb;
 
 import org.omg.PortableInterceptor.ClientRequestInfo;
 import org.omg.PortableInterceptor.ClientRequestInterceptor;
@@ -20,6 +20,8 @@ public class CustomInterceptor extends org.omg.CORBA.LocalObject implements Clie
 // ClientRequestInterceptor operations 
 	public void send_request( ClientRequestInfo ri )
 	{
+		System.out.println( ri.arguments() );
+		System.out.println( "Arguments.." );
 		logger( ri, "send_request" );
 	}
 
