@@ -20,6 +20,7 @@ public class PayPal extends BankAccount {
 			throw new NotEnoughBalanceException((amount + amount*0.02)-balance);
 		}
 		balance =  balance - (amount + amount*0.02);
+		forwardPaymentToGateway( amount );
 		return message;
 	}
 

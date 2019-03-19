@@ -1,5 +1,11 @@
 package models.payment;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import orb.DIIMethodInvoker;
+import orb.ParameterEnum;
+
 public abstract class BankAccount implements IBankAccount
 {
 	double balance;
@@ -11,6 +17,7 @@ public abstract class BankAccount implements IBankAccount
 	StringBuilder receipt;
 	boolean cardDetailsExpired = false;
 	String accountType;
+	String iban;
 	
 	
 	
@@ -23,6 +30,22 @@ public abstract class BankAccount implements IBankAccount
 		this.emailID = emailID;
 		this.type = type;
 		receipt = new StringBuilder();
+	}
+	
+	public void forwardPaymentToGateway(double amount)
+	{
+		try
+		{
+			Map<String,String> valueMap = new LinkedHashMap<>();
+			valueMap.put( ParameterEnum.ACCOUNT_NUMBER.name(), accountNumber );
+			valueMap.put( ParameterEnum.IBAN.name(), iban );
+			valueMap.put( ParameterEnum.AMOUNT.name(), String.valueOf( amount) );
+			DIIMethodInvoker.getInstance().callRemoteMethod( valueMap, "processPayment" );			
+		}
+		catch ( Exception e )
+		{
+			e.printStackTrace( );
+		}
 	}
 
 	
@@ -109,9 +132,13 @@ public abstract class BankAccount implements IBankAccount
 		this.receipt = receipt;
 	}
 
-
 	public String getAccountType()
 	{
 		return accountType;
 	}
+
+	public String getIban()
+	{
+		return iban;
+	}	
 }

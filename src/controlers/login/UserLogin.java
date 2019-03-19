@@ -67,18 +67,7 @@ public class UserLogin extends HttpServlet {
 	
 	void test ()
 	{
-		try
-		{
-			Map<String,String> valueMap = new LinkedHashMap<>();
-			valueMap.put( ParameterEnum.ACCOUNT_NUMBER.name(), "DRF5678" );
-			valueMap.put( ParameterEnum.IBAN.name(), "IBAN58948572393" );
-			valueMap.put( ParameterEnum.AMOUNT.name(), "3800" );
-			DIIMethodInvoker.getInstance().callRemoteMethod( valueMap, "processPayment" );			
-		}
-		catch ( Exception e )
-		{
-			e.printStackTrace( );
-		}
+		
 	}
 
 }
