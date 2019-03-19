@@ -1,10 +1,9 @@
 package orb;
 
+import org.omg.Dynamic.Parameter;
 import org.omg.PortableInterceptor.ClientRequestInfo;
 import org.omg.PortableInterceptor.ClientRequestInterceptor;
 import org.omg.PortableInterceptor.RequestInfo;
-import org.omg.PortableInterceptor.ServerRequestInfo;
-import org.omg.PortableInterceptor.ServerRequestInterceptor;
 
 public class CustomClientInterceptor extends org.omg.CORBA.LocalObject implements ClientRequestInterceptor
 {
@@ -20,7 +19,18 @@ public class CustomClientInterceptor extends org.omg.CORBA.LocalObject implement
 // ClientRequestInterceptor operations 
 	public void send_request( ClientRequestInfo ri )
 	{
-		System.out.println( ri.arguments() );
+		if(ri.operation().equals( "processPayment" ))
+		{
+			System.out.println( "################# CLIENT SIDE ###############" );
+			int count = 0;
+			for(Parameter param : ri.arguments())
+			{
+				System.out.println( "Arg : "+count );
+				System.out.println( param.argument.extract_string());
+				param.argument.insert_string( EncryptionDecryption.encrypt( param.argument.extract_string() ) );
+				count++;
+			}
+		}
 		System.out.println( "Arguments.." );
 		logger( ri, "send_request" );
 	}

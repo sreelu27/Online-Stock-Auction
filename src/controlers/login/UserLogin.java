@@ -1,7 +1,8 @@
 package controlers.login;
 
 import java.io.IOException;
-import java.util.Properties;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,15 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.omg.CORBA.ORB;
-import org.omg.CosNaming.NamingContextExt;
-import org.omg.CosNaming.NamingContextExtHelper;
-
 import models.entity.User;
 import models.login.LoginService;
 import models.profile.ProfilesService;
-import paymentgateway.SecurePaymentProcessor;
-import paymentgateway.SecurePaymentProcessorHelper;
+import orb.DIIMethodInvoker;
+import orb.ParameterEnum;
 
 /**
  * Servlet implementation class UserLogin
@@ -72,27 +69,15 @@ public class UserLogin extends HttpServlet {
 	{
 		try
 		{
-			//-ORBInitialPort 1050 -ORBInitialHost localhost
-			Properties p = new Properties();
-			p.put("org.omg.PortableInterceptor.ORBInitializerClass.orb.InterceptorORBInitializer", "");
-			//ORB orb = ORB.init(args, p);
-			
-			String[] orbArgs = { "-ORBInitialHost", "localhost", "-ORBInitialPort", "1050" };
-			//ORB orb = ORB.init( orbArgs, null );
-			ORB orb = ORB.init(orbArgs, p);
-			org.omg.CORBA.Object objRef = orb.resolve_initial_references( "NameService" );
-			NamingContextExt ncRef = NamingContextExtHelper.narrow( objRef );
-			SecurePaymentProcessor processor = (SecurePaymentProcessor) SecurePaymentProcessorHelper.narrow(ncRef.resolve_str("ABC"));
-			System.out.println("###### BEFORE CALLING REMOTE OBJECT ######");
-			processor.processPayment( "ACC_NO", "IBAN", "1400" );
-		   
-		    System.out.println("ORB Object called successfully..!!");
+			Map<String,String> valueMap = new LinkedHashMap<>();
+			valueMap.put( ParameterEnum.ACCOUNT_NUMBER.name(), "DRF5678" );
+			valueMap.put( ParameterEnum.IBAN.name(), "IBAN58948572393" );
+			valueMap.put( ParameterEnum.AMOUNT.name(), "3800" );
+			DIIMethodInvoker.getInstance().callRemoteMethod( valueMap, "processPayment" );			
 		}
 		catch ( Exception e )
 		{
-			System.out.println( "Failed to initialise ORB: " + e );
-			e.printStackTrace();
-			//throw new ServletException( "ORB initialisation failure", e );
+			e.printStackTrace( );
 		}
 	}
 
