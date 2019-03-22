@@ -1,11 +1,11 @@
 package models.receipt;
 
-import java.util.List;
 import java.util.Map;
 
 public abstract class Receipt
 {
 	protected Printing printing;
+	protected Map<String,String> data;
 	
 	public Receipt(Printing printing)
 	{
@@ -22,5 +22,10 @@ public abstract class Receipt
 	protected void printReceiptWithBarcode(Map<String,String> data)
 	{
 		printing.printReceiptWithBarcode( data );
+	}
+	
+	public void setData(Map<String,String> data)
+	{
+		this.data = data;
 	}
 }

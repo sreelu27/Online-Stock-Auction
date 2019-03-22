@@ -160,4 +160,10 @@ public class PaymentService extends EntityService
 		}.getType();
 		List<BankAccount> fromJson = gson.fromJson( json, listType );
 	}
+	
+	public boolean checkIfPaymentAllocated(Contract contract)
+	{
+		Payment payment = getPayment( Long.toString(contract.getContractID()) );
+		return payment != null && payment.getState() instanceof SentToPaymentGateway;
+	}
 }

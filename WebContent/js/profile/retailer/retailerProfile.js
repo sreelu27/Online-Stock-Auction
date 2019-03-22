@@ -37,6 +37,12 @@ $( document ).ready(function() {
 		return false;
 	});
     $( "#submitContractPayment" ).click(function() {
+    	jQuery('#printReceipt').remove();
+    	proceedToPaymentForm.submit();
+    });		
+    $( "#printReceiptButton" ).click(function() {
+    	input = jQuery('<input type="hidden" id="printReceipt" name="printReceipt" value="printReceipt_clicked">');
+    	proceedToPaymentForm.append(input);
     	proceedToPaymentForm.submit();
     });	
     var addFundsForm = $('#addFundsForm');

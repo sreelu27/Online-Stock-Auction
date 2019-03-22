@@ -44,7 +44,7 @@ public class ReportService
 //		report.generateReport( builder, response );
 	}
 	
-	public String printContract(Contract contract,String docType,HttpServletResponse response) throws IOException
+	public String printDocument(IReportStructure contract,String docType,HttpServletResponse response) throws IOException
 	{
 		PDFTable table = new PDFTable(1, 5);
 		IReport report;
@@ -60,4 +60,5 @@ public class ReportService
 		}
 		return message;		
 	}
+	
 }

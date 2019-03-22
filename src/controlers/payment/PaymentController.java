@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import models.contract.ContractService;
 import models.entity.Contract;
 import models.payment.PaymentService;
+import models.receipt.LetterHeadPrinting;
+import models.receipt.QRCodeReceipt;
+import models.receipt.Receipt;
+import models.receipt.ReceiptService;
+import models.receipt.ReceiptTypes;
 
 /**
  * Servlet implementation class PaymentController
@@ -49,11 +54,25 @@ public class PaymentController extends HttpServlet {
 		{
 			response.getWriter().append(PaymentService.getPaymentServiceInstance( getServletContext() ).addFundsToAccount( Double.parseDouble( fundAmount ), addFundsAccount ));
 		}
-		else if(selectedContractID != null)
+		else if(selectedContractID != null && !"printReceipt_clicked".equals(request.getParameter("printReceipt")))
 		{
 			Contract contract = ContractService.getContractServiceInstance( getServletContext() ).getContractByID(selectedContractID);
 			response.getWriter().append(PaymentService.getPaymentServiceInstance( getServletContext() ).makePayment( contract, account ));
-		}			
+		}		
+		else if("printReceipt_clicked".equals(request.getParameter("printReceipt")))
+		{
+			Contract contract = ContractService.getContractServiceInstance( getServletContext() ).getContractByID(selectedContractID);
+			if(PaymentService.getPaymentServiceInstance( getServletContext() ).checkIfPaymentAllocated( contract ))
+			{
+				// Print receipt
+				Receipt receipt = ReceiptService.getInstance().createReceipt( ReceiptTypes.QR_CODE_RECEIPT, contract, new LetterHeadPrinting() );
+				receipt.print();
+			}
+			else
+			{
+				response.getWriter().append("{\"state\":\"success\",\"message\":\"A payment has not allocated to this\"}");
+			}
+		}
 	}
 
 }
