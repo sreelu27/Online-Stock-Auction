@@ -72,14 +72,18 @@ public class ProductService extends EntityService
 	
 	public String getProductByID(String productID)
 	{
-		Product p=null;
+		Product p = null;
+		String message = "";
 		for(Product product : products)
 		{
 			if(product.getProductID() == Long.parseLong(productID))
-				p=product;
-			return p.getName();
+			{
+				p = product;
+				message = p.getName();
+				break;
+			}	
 		}
-		return null;
+		return message;
 	}
 	
 	public String disableEnableProduct(long productID)
@@ -92,12 +96,12 @@ public class ProductService extends EntityService
 				if(product.isDisabled())
 				{
 					product.setDisabled( false );
-					message = "{\"state\":\"success\",\"message\":\"Successflly enabled the product\",\"changedto\":\"Disable\"}";
+					message = "{\"state\":\"success\",\"message\":\"Successfully enabled the product\",\"changedto\":\"Disable\"}";
 				}
 				else
 				{
 					product.setDisabled( true );
-					message = "{\"state\":\"success\",\"message\":\"Successflly disabled the product\",\"changedto\":\"Enable\"}";
+					message = "{\"state\":\"success\",\"message\":\"Successfully disabled the product\",\"changedto\":\"Enable\"}";
 				}
 			}
 		}

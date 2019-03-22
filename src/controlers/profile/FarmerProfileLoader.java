@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import models.contract.ContractService;
 import models.entity.Farmer;
 import models.product.CareTaker;
@@ -23,6 +26,7 @@ import models.profile.ProfilesService;
 @WebServlet("/FarmerProfileLoader")
 public class FarmerProfileLoader extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	OriginatorWidget o = new OriginatorWidget();
 	CareTaker c = new CareTaker();
        
@@ -60,6 +64,13 @@ public class FarmerProfileLoader extends HttpServlet {
 			response.getWriter().append(ProductService.getProductServiceInstance(getServletContext()).getProductsAsJSON());
 					    
 		}
+		else if(event != null &&  event.equals("View Products"))
+		{
+		    Gson gson = new GsonBuilder().create();	
+		   
+			response.getWriter().append( gson.toJson(c.getProductList()));
+					    
+		}
 		else if(("commandForm".equals(request.getParameter("formSubmit1")))) {
 			String frequency1 = request.getParameter("frequency-dropdown_1");
 			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
@@ -85,6 +96,7 @@ public class FarmerProfileLoader extends HttpServlet {
 			String price = request.getParameter("price");
 			String frequency = request.getParameter("frequency-dropdown");
 			c.setWidget(o);
+			
 			
 			if ("undobutton_clicked".equals(request.getParameter("undobutton"))) {
 				
