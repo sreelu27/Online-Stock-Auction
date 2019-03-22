@@ -39,6 +39,7 @@ public class CareTaker {
 		return products;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setWidgetValue(String value) {
 		ow.setValue(value);
 		mementoStack.push(ow.createMemento());
