@@ -1,12 +1,12 @@
 package models.receipt;
 
-import java.util.List;
+import java.util.Map;
 
 public class QRCodeReceipt extends Receipt
 {
-	private List<String> data;
+	private Map<String,String> data;
 	
-	public QRCodeReceipt(Printing printing, List<String> data)
+	public QRCodeReceipt(Printing printing, Map<String,String> data)
 	{
 		super(printing);
 		this.data = data;		
