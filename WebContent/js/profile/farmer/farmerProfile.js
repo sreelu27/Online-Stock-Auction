@@ -41,12 +41,12 @@ $( document ).ready(function() {
 				$.each(data,function(key,value)
                 {
 					if( $('#searchResults').is(':empty') ) {
-						$('#searchResults').append(
-						'<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../FarmerProfileLoader">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualContractDispatch" value="individualBid"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
+						$('#searchResults').append('<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../FarmerProfileLoader">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualContractDispatch" value="individualContractDispatch"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
+
 					}
 					else
 					{
-						var div=$('<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../FarmerProfileLoader">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualContractDispatch" value="individualBid"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
+                        var div=$('<div id="result_'+key+'" style="border: 1px solid black;"><form id="dispatchid_'+key+'" name="dispatchid_'+key+'" method="post" action="../../../FarmerProfileLoader">'+'RetailerID : ['+value["retailerUserID"]+']<br>'+'Agreed Final Price : ['+value["agreedBid"]["agreedFinalPrice"]+']<br>'+'<br><input type="button" value="Dispatch" id="submitRetailerBid_'+key+'" class="input_class"/><input type="hidden" name="individualContractDispatch" value="individualContractDispatch"><input type="hidden" name="contractID" value="'+value["contractID"]+'"></form></div>');
 						var sopra=$('#result_'+(key-1));
 						$( sopra ).after( div );
 					}
