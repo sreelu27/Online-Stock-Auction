@@ -2,7 +2,7 @@ package models.product;
 
 public class OriginatorWidget implements ProductOriginator{
 	
-	private String value;
+	private String value = "";
 
 	public String getValue() {
 		return value;
@@ -17,7 +17,7 @@ public class OriginatorWidget implements ProductOriginator{
 	public Memento createMemento() {
 		WidgetMemento m= new WidgetMemento();
 		m.setState(new String(value));
-		System.out.println("Originator: Saving to Memento.");
+		System.out.println("Originator: Creating Memento.");
 		return m;
 	}
 	

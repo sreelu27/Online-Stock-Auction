@@ -70,6 +70,18 @@ public class ProductService extends EntityService
 		return null;
 	}
 	
+	public String getProductByID(String productID)
+	{
+		Product p=null;
+		for(Product product : products)
+		{
+			if(product.getProductID() == Long.parseLong(productID))
+				p=product;
+			return p.getName();
+		}
+		return null;
+	}
+	
 	public String disableEnableProduct(long productID)
 	{
 		String message = "";

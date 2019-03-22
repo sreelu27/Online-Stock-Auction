@@ -76,6 +76,8 @@ public class ProductStockService extends EntityService
 		}
 		return prodStock;
 	}
+	
+	
 	public String getSearchedProductStocksAsJSON(String productID, String frequency, String quantity)
 	{
 		List<ProductStock> searched = new ArrayList<>();

@@ -23,6 +23,12 @@ $( document ).ready(function() {
 		return false;
 	});
     $( "#submitProductStock" ).click(function() {
+    	jQuery('#undobutton').remove();
+    	submitProductForm.submit();
+    });	
+    $( "#undoProductStock" ).click(function() {
+    	input = jQuery('<input type="hidden" id="undobutton" name="undobutton" value="undobutton_clicked">');
+    	submitProductForm.append(input);
     	submitProductForm.submit();
     });	
     doPoll();
@@ -118,7 +124,7 @@ function openCity(evt, eventName) {
     		        tabEvent: eventName
     		    },
     		    function(data, status){
-    		       // alert("Data: " + data + "\nStatus: " + status);
+    		       
     		    	$("#product-dropdown").html('');
     		    	 var optionEmpty = $('<option />').val('-1').text('-- Select --');
     		    	$("#product-dropdown").append(optionEmpty);

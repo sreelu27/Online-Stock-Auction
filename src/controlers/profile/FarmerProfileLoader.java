@@ -78,22 +78,31 @@ public class FarmerProfileLoader extends HttpServlet {
 			}
 			
 		}
-		else if("productStockForm".equals(request.getParameter("formSubmit")) && (request.getParameter("undo"))==null) {
+		else if("productStockForm".equals(request.getParameter("formSubmit"))) {
 			
 			String selectedProduct = request.getParameter("product-dropdown");
 			String quantity = request.getParameter("quantity");
 			String price = request.getParameter("price");
 			String frequency = request.getParameter("frequency-dropdown");
+			c.setWidget(o);
 			
-		    
-		     Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
-			String id=Long.toString(user.getUserID());
-			response.getWriter().append(ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price));
+			if ("undobutton_clicked".equals(request.getParameter("undobutton"))) {
+				
+				c.undoOperation();
+				System.out.println(c.getWidgetValue());
+				response.getWriter().append("{\"state\":\"Undo process done sucessfully..!!\"}");
+			}
+			else {
+				
+				Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
+				String id=Long.toString(user.getUserID());
+				c.setWidgetValue((ProductService.getProductServiceInstance(getServletContext()).getProductByID(selectedProduct)));
+				System.out.println(c.getWidgetValue());
+				response.getWriter().append(ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price));
+			}
+				
 		}
 		
-		else if((request.getParameter("undo"))!=null && ("productStockForm".equals(request.getParameter("formSubmit")))) {
-			
-		}
 		else
 		{
 			

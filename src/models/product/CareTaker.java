@@ -16,8 +16,15 @@ public class CareTaker {
 	}
 
 	public void undoOperation() {
-		ProductOriginator o = (ProductOriginator) originatorStack.pop();
-		o.restore((Memento) mementoStack.pop());
+		if(!originatorStack.isEmpty())
+		{
+			ProductOriginator o = (ProductOriginator) originatorStack.pop();
+			o.restore((Memento) mementoStack.pop());
+		}
+		else
+		{
+			System.out.println("Empty state");
+		}
 	}
 
 	public void setWidgetValue(String value) {
