@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import models.contract.ContractService;
 import models.entity.Farmer;
+import models.memento.Originator;
+import models.memento.Caretaker;
+import models.product.OriginatorWidget;
 import models.product.ProductService;
 import models.product.ProductStockService;
 import models.profile.ProfilesService;
@@ -21,6 +24,8 @@ import models.profile.ProfilesService;
 @WebServlet("/FarmerProfileLoader")
 public class FarmerProfileLoader extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	Originator o=new Originator();
+	Caretaker c=new Caretaker();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -74,16 +79,22 @@ public class FarmerProfileLoader extends HttpServlet {
 			}
 			
 		}
-		else if("productStockForm".equals(request.getParameter("formSubmit"))) {
+		else if("productStockForm".equals(request.getParameter("formSubmit")) && (request.getParameter("undo"))==null) {
 			
 			String selectedProduct = request.getParameter("product-dropdown");
 			String quantity = request.getParameter("quantity");
 			String price = request.getParameter("price");
 			String frequency = request.getParameter("frequency-dropdown");
-			
-			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
+			o.setState(selectedProduct);
+		    c.addMemento(o.save());
+		    
+		     Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
 			String id=Long.toString(user.getUserID());
 			response.getWriter().append(ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price));
+		}
+		
+		else if((request.getParameter("undo"))!=null && ("productStockForm".equals(request.getParameter("formSubmit")))) {
+			o.restore( c.getMemento() );
 		}
 		else
 		{

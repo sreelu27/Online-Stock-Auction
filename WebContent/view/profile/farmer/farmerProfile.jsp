@@ -68,7 +68,8 @@
 						</select><br>
 						<input type="text" id="quantity" name="quantity" placeholder="Quantity(t)" class="input_class"><br>	
 						<input type="text" id="price" name="price" placeholder="Price" class="input_class"><br>	
-						<input type="button" value="Submit Stock" id="submitProductStock" class="input_class"/>	
+						<input type="button" value="Submit Stock" id="submitProductStock" name="add" class="input_class"/><br>
+						<input type="button" value="Undo Stock" id="undoProductStock" name="undo" class="input_class"/>
 					</form>
 		</div>
     </div>
