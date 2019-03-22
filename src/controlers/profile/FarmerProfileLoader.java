@@ -11,8 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import models.contract.ContractService;
 import models.entity.Farmer;
-import models.memento.Originator;
-import models.memento.Caretaker;
+import models.product.CareTaker;
 import models.product.OriginatorWidget;
 import models.product.ProductService;
 import models.product.ProductStockService;
@@ -24,8 +23,8 @@ import models.profile.ProfilesService;
 @WebServlet("/FarmerProfileLoader")
 public class FarmerProfileLoader extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Originator o=new Originator();
-	Caretaker c=new Caretaker();
+	OriginatorWidget o = new OriginatorWidget();
+	CareTaker c = new CareTaker();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -85,8 +84,7 @@ public class FarmerProfileLoader extends HttpServlet {
 			String quantity = request.getParameter("quantity");
 			String price = request.getParameter("price");
 			String frequency = request.getParameter("frequency-dropdown");
-			o.setState(selectedProduct);
-		    c.addMemento(o.save());
+			
 		    
 		     Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
 			String id=Long.toString(user.getUserID());
@@ -94,7 +92,7 @@ public class FarmerProfileLoader extends HttpServlet {
 		}
 		
 		else if((request.getParameter("undo"))!=null && ("productStockForm".equals(request.getParameter("formSubmit")))) {
-			o.restore( c.getMemento() );
+			
 		}
 		else
 		{
