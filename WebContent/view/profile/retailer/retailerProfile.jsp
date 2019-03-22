@@ -89,6 +89,7 @@
 			<select id="contract-dropdown" name="contract-dropdown" class="input_class"></select><br>
 			<select id="account-dropdown" name="account-dropdown" class="input_class"></select><br>
 			<input type="button" value="Proceed" id="submitContractPayment" class="input_class"/>	
+			<input type="button" value="Print Receipt" id="printReceiptButton" class="input_class"/>	
 		</form>
    	</div>	
    	<div id="fundsAdding" style="width: 300px; margin-right: 10px; float:left;">
