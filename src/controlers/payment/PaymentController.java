@@ -65,7 +65,8 @@ public class PaymentController extends HttpServlet {
 			if(PaymentService.getPaymentServiceInstance( getServletContext() ).checkIfPaymentAllocated( contract ))
 			{
 				// Print receipt
-				Receipt receipt = ReceiptService.getInstance().createReceipt( ReceiptTypes.QR_CODE_RECEIPT, contract, new LetterHeadPrinting() );
+				response.setContentType("application/pdf");
+				Receipt receipt = ReceiptService.getInstance().createReceipt( ReceiptTypes.QR_CODE_RECEIPT, contract, new LetterHeadPrinting(),response );
 				receipt.print();
 			}
 			else

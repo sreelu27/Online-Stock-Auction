@@ -38,12 +38,18 @@ $( document ).ready(function() {
 	});
     $( "#submitContractPayment" ).click(function() {
     	jQuery('#printReceipt').remove();
+    	proceedToPaymentForm.removeAttr('target');
+    	proceedToPaymentForm.on('submit');
     	proceedToPaymentForm.submit();
     });		
     $( "#printReceiptButton" ).click(function() {
+    	jQuery('#printReceipt').remove();
     	input = jQuery('<input type="hidden" id="printReceipt" name="printReceipt" value="printReceipt_clicked">');
+    	proceedToPaymentForm.attr("target", "blank");
     	proceedToPaymentForm.append(input);
+    	proceedToPaymentForm.off('submit');
     	proceedToPaymentForm.submit();
+    	proceedToPaymentForm.removeAttr('target');
     });	
     var addFundsForm = $('#addFundsForm');
     addFundsForm.submit(function (e) 

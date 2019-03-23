@@ -97,21 +97,11 @@ public abstract class Contract implements IReportStructure
 	
 	@Override
 	public String getFooter() {
-//		PdfPTable table = new PdfPTable(2);
-//		table.addCell(table);
-//		PDFCell cell1 = new PDFCell("Signed Date : ");
-//		PDFCell cell2 = new PDFCell(new Date().toString());
-//		table.addCell(cell1.getCell());
-//		table.addCell(cell2.getCell());
 		return "Signed Date : "+new Date().toString();
 	}
 	@Override
 	public String getHeader() {
-//			PdfPTable table = new PdfPTable(2);			
-//			table.addCell(table);
-//			PDFCell cell1 = new PDFCell("Contract");
-//			table.addCell(cell1.getCell());
-			return "Contract";
+		return "Contract";
 	}
 	@Override
 	public PdfPTable getBody(PdfPTable  table) {

@@ -13,6 +13,6 @@ public class ReceiptWithBarcode extends Receipt
 	@Override
 	public void print()
 	{
-		printReceiptWithBarcode( data );
+		printReceiptWithBarcode( data,response );
 	}
 }

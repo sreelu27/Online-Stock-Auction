@@ -85,7 +85,7 @@
 <div id="Manage Payments" class="tabcontent">
 	<div id="proceedToPayment" style="width: 300px; margin-right: 10px;">
    		<h4>Select a Contract and proceed to payment</h4>
-	    <form method="post" action="../../../PaymentController" id="proceedToPaymentForm">	
+	    <form method="post" action="../../../PaymentController" id="proceedToPaymentForm" >	
 			<select id="contract-dropdown" name="contract-dropdown" class="input_class"></select><br>
 			<select id="account-dropdown" name="account-dropdown" class="input_class"></select><br>
 			<input type="button" value="Proceed" id="submitContractPayment" class="input_class"/>	
