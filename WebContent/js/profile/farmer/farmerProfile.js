@@ -117,6 +117,24 @@ function openCity(evt, eventName) {
     				}
     			});		
     	}
+    else if(eventName == 'View Products')
+	{
+    	$.post('../../../FarmerProfileLoaderRequest',
+    		    {
+    		        tabEvent: eventName
+    		    },
+    		    function(data, status){
+    		    	 $("#products_view").html('');
+    		       $.each(data,function(key,value)
+   		                {
+   		        	
+   		                    var option = $('<p>'+value+'</p>');
+   		                    $("#products_view").append(option);
+   		                });
+					
+    		        
+    		    });
+	}
     else if(eventName=="Add Products"){
     	
     	$.post('../../../FarmerProfileLoaderRequest',

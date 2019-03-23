@@ -20,6 +20,7 @@
 	<div class="tab">
 		<button class="tablinks" onclick="openCity(event, 'Account Details')" id="defaultOpen">Account</button>
 		<button class="tablinks" onclick="openCity(event, 'Add Products')">Add Products</button>
+		<button class="tablinks" onclick="openCity(event, 'View Products')">View Products</button>
 		<button class="tablinks" onclick="openCity(event, 'Bids')">View Bids</button>
 		<button class="tablinks" onclick="openCity(event, 'Contracts')">View Contracts</button>
 		
@@ -33,6 +34,13 @@
 		<p>Contact Number:<input type="text" id="telephone"></p><br/>
 		<p>Spam:<input type="text" id="spam"></p><br/>
 		
+		
+	</div>
+	
+	<div id="View Products" class="tabcontent">
+		<h3>View Products</h3><br/><br/>
+		
+		<div id="products_view"></div>
 		
 	</div>
 	
