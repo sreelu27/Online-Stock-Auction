@@ -9,9 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import models.contract.ContractService;
 import models.entity.User;
 import models.product.ProductService;
 import models.profile.ProfilesService;
+import models.report.IReportStructure;
+import models.report.ReportService;
+import models.report.export.DataExport;
+import models.report.export.DataExportAdapter;
 
 /**
  * Servlet implementation class AdminProfileLoader
@@ -60,6 +65,12 @@ public class AdminProfileLoader extends HttpServlet {
 		else if(disableProduct != null && disableProduct.length()>0)
 		{
 			response.getWriter().append(ProductService.getProductServiceInstance( getServletContext() ).disableEnableProduct( Long.parseLong( disableProduct ) ));
+		}
+		else if("generateReport".equals(request.getParameter("formSubmit"))) 
+		{
+			DataExport export = new DataExportAdapter();
+			export.emailExport(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")));
+			response.getWriter().append("{\"state\":\"Success\",\"message\":\"Export to emails successfully..!!\",\"page\":\""+user.getUsername()+"\",\"id\":"+user.getUserID()+"}");
 		}
 		else
 		{		

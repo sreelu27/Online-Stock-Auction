@@ -3,6 +3,25 @@ $( document ).ready(function() {
 	
 	// Get the element with id="defaultOpen" and click on it
 	document.getElementById("defaultOpen").click();
+	var acceptBidForm = $('#submitReportForm');
+    
+    acceptBidForm.submit(function (e) 
+    		{	
+    			$.ajax(
+    			{
+    				type: acceptBidForm.attr('method'),
+    				url: acceptBidForm.attr('action'),
+    				data: acceptBidForm.serialize(),
+    				success: function (data) 
+    				{
+    					alert(data.message);
+    				}
+    			});		 
+    			return false;
+    		});
+    $( "#generate_contract_report" ).click(function() {
+    	acceptBidForm.submit();
+    });
 });
 function openCity(evt, eventName) {
     var i, tabcontent, tablinks;

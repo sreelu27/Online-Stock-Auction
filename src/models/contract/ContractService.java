@@ -138,6 +138,17 @@ public class ContractService extends EntityService
 		return null;
 	}
 	
+	public List<Object> getContractsPerFrequency(String frequency)
+	{
+		List<Object> contractsByFrequency = new ArrayList<>();
+		for(Contract contract : contracts)
+		{
+			if(contract.getStockFrequency().name().equals(frequency))
+				contractsByFrequency.add(contract);
+		}
+		return contractsByFrequency;
+	}
+	
 	public String getPaidContractsForFarmer(long farmerID)
 	{
 		List<Contract> paidFarmerContracts = new ArrayList<>();
