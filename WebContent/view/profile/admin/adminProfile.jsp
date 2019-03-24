@@ -44,7 +44,7 @@
 						  <option value="MONTHLY">MONTHLY</option>
 						  <option value="YEARLY">YEARLY</option>
 						</select><br>
-						<button class="tablinks" id="generate_contract_report">Generate Report</button>
+						<input type="button" id="generate_contract_report" value="Generate Report" class="input_class"/>
 	  </form>
   </div>
 </div>
