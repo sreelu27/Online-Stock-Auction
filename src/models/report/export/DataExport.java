@@ -5,7 +5,7 @@ import java.util.List;
 public abstract class DataExport {
 	// FrameworkClass <target>
 	
-	void pdfExport(List<Object> entities)
+	public void pdfExport(List<Object> entities)
 	{
 		for(Object obj : entities)
 		{
@@ -13,12 +13,12 @@ public abstract class DataExport {
 		}
 	}
 	
-	void excelExport(List<Object> entities)
+	public void excelExport(List<Object> entities)
 	{
 		// implement excel export
 	}
 	
-	abstract void emailExport(List<Object> entities);
+	public abstract void emailExport(List<Object> entities);
 	
 
 }

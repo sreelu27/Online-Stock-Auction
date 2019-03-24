@@ -33,14 +33,19 @@
 <div id="Generate Report" class="tabcontent">
   <h3>Report</h3>
   <p>It will generate business reports on daily, weekly, monthly, quarterly and yearly basis.</p>
-  <button class="tablinks" onclick="return showdet();">Contract Report</button>
   <button class="tablinks" onclick="return showdet();">Bidding Report</button>
   <div id='showvars' style="display:none;">
-	  <button class="tablinks" onclick="">Daily</button>
-	  <button class="tablinks" onclick="">Weekly</button>
-	  <button class="tablinks" onclick="">Monthly</button>
-	  <button class="tablinks" onclick="">Quarterly</button>
-	  <button class="tablinks" onclick="">Yearly</button>
+	  <form method="post" action="../../../AdminProfileLoaderRequest" id="submitReportForm">	
+				        <input type="hidden" id="formSubmit" name="formSubmit" value="generateReport">
+						<select id="frequency-dropdown" name="frequency-dropdown" class="input_class">
+						  <option value="">---Select---</option>
+						  <option value="DAILY">DAILY</option>
+						  <option value="WEEKLY">WEEKLY</option>
+						  <option value="MONTHLY">MONTHLY</option>
+						  <option value="YEARLY">YEARLY</option>
+						</select><br>
+						<button class="tablinks" id="generate_contract_report">Generate Report</button>
+	  </form>
   </div>
 </div>
 
