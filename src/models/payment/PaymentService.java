@@ -68,7 +68,7 @@ public class PaymentService extends EntityService
 		{
 			try
 			{
-				message = account.makePayment( contract.getPriceOnFrequency() );
+				message = account.makePayment( contract.getPriceOnFrequency() );				
 				payment.setState( new SentToPaymentGateway() );
 				contract.setPaid(true);
 			}

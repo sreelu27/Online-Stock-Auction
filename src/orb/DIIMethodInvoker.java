@@ -94,7 +94,7 @@ public class DIIMethodInvoker
 		    
 		    //Extract Result
 		    result = thisReq.result().value (); 
-		    System.out.println ("get_price () returned: " + result.extract_string()); 
+		    System.out.println ("processPayment () returned: " + result.extract_string()); 
 		    
 		    
 		}
