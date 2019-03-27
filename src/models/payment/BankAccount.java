@@ -11,6 +11,7 @@ public abstract class BankAccount implements IBankAccount
 	StringBuilder receipt;
 	boolean cardDetailsExpired = false;
 	String accountType;
+	String iban;
 	
 	
 	
@@ -109,9 +110,14 @@ public abstract class BankAccount implements IBankAccount
 		this.receipt = receipt;
 	}
 
-
 	public String getAccountType()
 	{
 		return accountType;
 	}
+	
+	public String getIban()
+	{
+		return iban;
+	}
+	
 }
