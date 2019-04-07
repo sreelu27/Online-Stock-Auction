@@ -85,6 +85,11 @@
       <artifactId>powermock-api-mockito2</artifactId>
       <version>1.7.0</version>
       <scope>test</scope>
-    </dependency>	    
+    </dependency>	
+    <dependency>
+    	<groupId>org.apache.httpcomponents</groupId>
+    	<artifactId>httpclient</artifactId>
+    	<version>4.5.8</version>
+	</dependency>    
   </dependencies>
 </project>

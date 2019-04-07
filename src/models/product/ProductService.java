@@ -1,5 +1,6 @@
 package models.product;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -20,6 +26,7 @@ public class ProductService extends EntityService
 	private static ProductService productService;
 	List<Product> products = new ArrayList<>();
 	static String filePath = "/WEB-INF/db/product/Product.json";
+	static String productMicroservice = "http://localhost:8089/products";
 
 	
 	private ProductService(ServletContext context,String filePath)
@@ -32,7 +39,7 @@ public class ProductService extends EntityService
 		if(productService == null)
 		{
 			productService = new ProductService(context,filePath);
-			productService.loadEntities();
+			productService.loadProducts();
 		}
 		return productService;
 	}
@@ -122,5 +129,34 @@ public class ProductService extends EntityService
 		}
 		TypeToken<List<Product>> token = new TypeToken<List<Product>>() {};
 		products = getGson().fromJson(new InputStreamReader(getIs()), token.getType());
+	}
+	
+	private void loadProducts()
+	{
+		HttpClient client = new DefaultHttpClient();
+		HttpGet request = new HttpGet(productMicroservice);
+		StringBuilder productItems = new StringBuilder();
+		try
+		{
+			HttpResponse response = client.execute(request);
+
+			// Get the response
+			BufferedReader rd = new BufferedReader
+			    (new InputStreamReader(
+			    response.getEntity().getContent()));
+
+			
+			String line = "";
+			while ((line = rd.readLine()) != null) {
+			    productItems.append( line );
+			}
+			System.out.println( "ITEMS FROM MICROSERVICE : "+productItems.toString() );
+		}
+		catch ( Exception e )
+		{
+			e.printStackTrace();
+		}
+		TypeToken<List<Product>> token = new TypeToken<List<Product>>() {};
+		products = getGson().fromJson( productItems.toString(), token.getType() );
 	}
 }
