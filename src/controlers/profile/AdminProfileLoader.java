@@ -1,6 +1,8 @@
 package controlers.profile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,10 +15,9 @@ import models.contract.ContractService;
 import models.entity.User;
 import models.product.ProductService;
 import models.profile.ProfilesService;
-import models.report.IReportStructure;
-import models.report.ReportService;
 import models.report.export.DataExport;
 import models.report.export.DataExportAdapter;
+import models.report.export.EmailExpoter;
 
 /**
  * Servlet implementation class AdminProfileLoader
@@ -68,8 +69,9 @@ public class AdminProfileLoader extends HttpServlet {
 		}
 		else if("generateReport".equals(request.getParameter("formSubmit"))) 
 		{
-			DataExport export = new DataExportAdapter();
-			export.emailExport(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")));
+			DataExport export = new DataExportAdapter(new EmailExpoter());
+			List<String> emailList = new ArrayList<>();
+			export.emailExport(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")),emailList);
 			response.getWriter().append("{\"state\":\"Success\",\"message\":\"Export to emails successfully..!!\",\"page\":\""+user.getUsername()+"\",\"id\":"+user.getUserID()+"}");
 		}
 		else

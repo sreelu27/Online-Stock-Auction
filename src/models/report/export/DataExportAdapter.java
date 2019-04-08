@@ -4,12 +4,18 @@ import java.util.List;
 
 public class DataExportAdapter extends DataExport{
 
+	//<<Adapter>>
+	private EmailExpoter emailExpoter;
+	
+	public DataExportAdapter(EmailExpoter emailExpoter)
+	{
+		this.emailExpoter = emailExpoter;
+	}
+	
+	// This method uses the functionality coming from Adaptee which is EmailExporter Class
 	@Override
-	public void emailExport(List<Object> entities) {
-		for(Object obj : entities)
-		{
-			System.out.println(obj.toString());
-		}
+	public void emailExport(List<Object> entities,List<String> emailList) {
+		emailExpoter.exportToEmail( emailList, emailExpoter.connectToEmailServer(), entities );
 	}
 
 }

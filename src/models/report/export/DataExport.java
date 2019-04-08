@@ -3,7 +3,7 @@ package models.report.export;
 import java.util.List;
 
 public abstract class DataExport {
-	// FrameworkClass <target>
+	// FrameworkClass <<Target>>
 	
 	public void pdfExport(List<Object> entities)
 	{
@@ -18,7 +18,8 @@ public abstract class DataExport {
 		// implement excel export
 	}
 	
-	public abstract void emailExport(List<Object> entities);
+	// not implemented method
+	public abstract void emailExport(List<Object> entities,List<String> emailList);
 	
 
 }

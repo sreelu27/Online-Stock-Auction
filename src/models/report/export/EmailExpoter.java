@@ -3,7 +3,7 @@ package models.report.export;
 import java.util.List;
 
 public class EmailExpoter {
-	
+	//<<Adaptee>> this class having the functionality that is going to be used by <<Adapter>>
 	public void exportToEmail(List<String> emailList,EmailConnector connector,List<Object> entities)
 	{
 		for(String email : emailList)
