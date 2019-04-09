@@ -5,21 +5,15 @@ import java.util.List;
 public abstract class DataExport {
 	// FrameworkClass <<Target>>
 	
-	public void pdfExport(List<Object> entities)
-	{
-		for(Object obj : entities)
-		{
-			System.out.println(obj.toString());
-		}
-	}
+	protected String lastTimeStamp="NO PREVIOUS REPORTS EXPORTED";
 	
-	public void excelExport(List<Object> entities)
+	public String getLastReportTimestamp()
 	{
-		// implement excel export
+		return lastTimeStamp;
 	}
 	
 	// not implemented method
-	public abstract void emailExport(List<Object> entities,List<String> emailList);
+	public abstract void exportData(List<Object> entities,List<String> emailList);
 	
 
 }

@@ -16,7 +16,7 @@ import models.entity.User;
 import models.product.ProductService;
 import models.profile.ProfilesService;
 import models.report.export.DataExport;
-import models.report.export.DataExportAdapter;
+import models.report.export.EmailDataExportAdapter;
 import models.report.export.EmailExpoter;
 
 /**
@@ -69,9 +69,9 @@ public class AdminProfileLoader extends HttpServlet {
 		}
 		else if("generateReport".equals(request.getParameter("formSubmit"))) 
 		{
-			DataExport export = new DataExportAdapter(new EmailExpoter());
+			DataExport export = new EmailDataExportAdapter(new EmailExpoter());
 			List<String> emailList = new ArrayList<>();
-			export.emailExport(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")),emailList);
+			export.exportData(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")),emailList);
 			response.getWriter().append("{\"state\":\"Success\",\"message\":\"Export to emails successfully..!!\",\"page\":\""+user.getUsername()+"\",\"id\":"+user.getUserID()+"}");
 		}
 		else
