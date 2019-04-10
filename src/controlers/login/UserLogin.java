@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.plugface.core.PluginManager;
+
 import models.entity.User;
 import models.login.LoginService;
 import models.profile.ProfilesService;
+import pluginconfig.PluginInHandler;
 
 /**
  * Servlet implementation class UserLogin
@@ -48,6 +51,8 @@ public class UserLogin extends HttpServlet {
 		session.setAttribute("username", request.getParameter("username"));
 		response.setContentType("application/json");		
 		User user = null;
+		
+		
 		if(ProfilesService.getProfileServiceInstance(getServletContext()).validLoginCheck( username, password ))
 		{
 			user = ProfilesService.getProfileServiceInstance(getServletContext()).getProfile(username);
