@@ -6,7 +6,8 @@ import org.plugface.core.PluginManager;
 import org.plugface.core.factory.PluginManagers;
 import org.plugface.core.factory.PluginSources;
 
-import pluginconfig.plugininterfaces.Chart;
+import ie.ul.interfaces.Chart;
+
 
 public class PluginInitializer
 {
