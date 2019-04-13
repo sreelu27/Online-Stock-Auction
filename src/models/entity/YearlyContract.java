@@ -2,8 +2,6 @@ package models.entity;
 
 public class YearlyContract extends Contract implements Command
 {
-	private Farmer farmer;
-	
 	public YearlyContract(Bid bid)
 	{
 		super("yearlycontract"); // this is only a GSON library requirement for deserializing JSON files to java objects
@@ -38,9 +36,8 @@ public class YearlyContract extends Contract implements Command
 	}
 
 	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		farmer.dispatchYearly();
+	public String execute() {
+		return farmer.dispatchYearly();
 		
 	}
 

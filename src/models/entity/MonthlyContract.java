@@ -2,8 +2,6 @@ package models.entity;
 
 public class MonthlyContract extends Contract implements Command
 {
-	private Farmer farmer;
-	
 	public MonthlyContract(Bid bid)
 	{
 		super("monthlycontract"); // this is only a GSON library requirement for deserializing
@@ -40,9 +38,9 @@ public class MonthlyContract extends Contract implements Command
 	}
 
 	@Override
-	public void execute() {
+	public String execute() {
 		// TODO Auto-generated method stub
-		farmer.dispatchMonthly();
+		return farmer.dispatchMonthly();
 	}
 
 }

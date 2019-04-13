@@ -10,7 +10,7 @@ import models.report.IReportStructure;
 import models.report.PDFCell;
 import models.report.PDFTable;
 
-public abstract class Contract implements IReportStructure
+public abstract class Contract implements IReportStructure,Command
 {
 	private long farmerUserID;
 	private long retailerUserID;
@@ -20,6 +20,7 @@ public abstract class Contract implements IReportStructure
 	private StringBuilder contractConstraints = new StringBuilder();
 	String type;  // this is only a GSON library requirement for deserializing
 	boolean paid;
+	protected Farmer farmer;
 	
 	public Contract(String type)
 	{
@@ -137,6 +138,15 @@ public abstract class Contract implements IReportStructure
 	public void setContractID( long contractID )
 	{
 		this.contractID = contractID;
-	}		
+	}
 
+	public Farmer getFarmer()
+	{
+		return farmer;
+	}
+
+	public void setFarmer( Farmer farmer )
+	{
+		this.farmer = farmer;
+	}		
 }

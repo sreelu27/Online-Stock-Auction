@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import models.contract.ContractService;
+import models.entity.Contract;
 import models.entity.Farmer;
 import models.product.CareTaker;
 import models.product.OriginatorWidget;
@@ -70,6 +71,14 @@ public class FarmerProfileLoader extends HttpServlet {
 		   
 			response.getWriter().append( gson.toJson(c.getProductList()));
 					    
+		}
+		else if(("individualContractDispatch".equals(request.getParameter("individualContractDispatch")))) {
+			String contractID = request.getParameter("contractID");
+			Contract contract = ContractService.getContractServiceInstance( getServletContext() ).getContractByID( contractID );
+			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
+			contract.setFarmer( user );
+			response.getWriter().append("{\"state\":\"success\",\"message\":\"" + contract.execute() + "\"}");
+			
 		}
 		else if(("commandForm".equals(request.getParameter("formSubmit1")))) {
 			String frequency1 = request.getParameter("frequency-dropdown_1");

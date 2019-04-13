@@ -1,8 +1,8 @@
 package models.entity;
 
-public class DailyContract extends Contract implements Command
+public class DailyContract extends Contract
 {	
-	private Farmer farmer;
+	
 
 	public DailyContract(Bid bid)
 	{
@@ -39,9 +39,9 @@ public class DailyContract extends Contract implements Command
 	}
 
 	@Override
-	public void execute() {
+	public String execute() {
 		// TODO Auto-generated method stub
-		farmer.dispatchDaily();
+		return farmer.dispatchDaily();
 	}
 
 }

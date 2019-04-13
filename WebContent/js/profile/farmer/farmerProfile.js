@@ -66,7 +66,7 @@ $( document ).ready(function() {
 							data: individualBidForm.serialize(),
 							success: function (data) 
 							{
-								alert(data.state);
+								alert(data.message);
 							}
 						});		 
 						return false;
