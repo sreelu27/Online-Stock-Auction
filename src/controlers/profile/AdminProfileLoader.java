@@ -54,7 +54,7 @@ public class AdminProfileLoader extends HttpServlet {
 		String username = (String)session.getAttribute("username");
 		String event =  request.getParameter("tabEvent");
 		String disableProduct =  request.getParameter("disableProduct");
-		PluginManager pluginManager = PluginInHandler.getInstance().getPluginManager();
+		PluginManager pluginManager = PluginInHandler.getInstance(getServletContext()).getPluginManager();
 		Chart chart = pluginManager.getPlugin(Chart.class); 
 		chart.draw( new ArrayList<>());
 		

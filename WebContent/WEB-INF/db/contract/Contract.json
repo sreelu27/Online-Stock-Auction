@@ -100,5 +100,31 @@
       "signedByRetailer":false
    },
    "stockFrequency":"WEEKLY"
+   },
+   {
+      "farmerUserID":100105,
+      "retailerUserID":100101,
+      "contractID":444235,
+      "contractConstraints":"",
+      "type":"weeklycontract",
+      "paid":true,
+      "agreedBid":{
+      "productStock":{
+         "product":{
+            "name": "Cabage",
+		    "productID": 111003
+         },
+         "quantitiy":125000,
+         "frequency":"WEEKLY",
+         "unitPrice":6000.0,
+         "productStockID":999003
+      },
+      "agreedFinalPrice":5500.0,
+      "retailerID":100101,
+      "farmerID":100105,
+      "signedByFarmer":true,
+      "signedByRetailer":false
+   },
+   "stockFrequency":"WEEKLY"
    }
 ]
