@@ -39,7 +39,8 @@ public class ProductService extends EntityService
 		if(productService == null)
 		{
 			productService = new ProductService(context,filePath);
-			productService.loadProducts();
+			//productService.loadProducts();
+			productService.loadEntities();
 		}
 		return productService;
 	}
