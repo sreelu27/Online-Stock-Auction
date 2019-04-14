@@ -1,19 +1,19 @@
 package models.entity;
 
 public class WeeklyContract extends Contract implements Command
+{
+	public WeeklyContract( Bid bid )
 	{
-	Farmer farmer;
-    public WeeklyContract(Bid bid)
-	{
-		super("weeklycontract"); // this is only a GSON library requirement for deserializing
-		this.setStockFrequency(StockFrequency.WEEKLY);
-		this.setAgreedBid(bid);
+		super( "weeklycontract" ); // this is only a GSON library requirement for deserializing
+		this.setStockFrequency( StockFrequency.WEEKLY );
+		this.setAgreedBid( bid );
 	}
 
-	public WeeklyContract(Farmer farmer) {
-		this.farmer=farmer;
+	public WeeklyContract( Farmer farmer )
+	{
+		this.farmer = farmer;
 	}
-	
+
 	@Override
 	public double getPriceOnFrequency()
 	{
@@ -23,24 +23,27 @@ public class WeeklyContract extends Contract implements Command
 	@Override
 	public StringBuilder getContractConstraints()
 	{
-		getStringBuilder().append( "  > This contract roles out in weekly basis\n");
+		getStringBuilder().append( "  > This contract roles out in weekly basis\n" );
 		return getStringBuilder();
 	}
-	
+
 	@Override
-	public String getFarmerDetails() {
-		return "Farmer ID : "+ getAgreedBid().getFarmerID();
+	public String getFarmerDetails()
+	{
+		return "Farmer ID : " + getAgreedBid().getFarmerID();
 	}
 
 	@Override
-	public String getRetailerDetails() {
-		return "Retailer ID : "+ getAgreedBid().getRetailerID();
+	public String getRetailerDetails()
+	{
+		return "Retailer ID : " + getAgreedBid().getRetailerID();
 	}
 
 	@Override
-	public String execute() {
+	public String execute()
+	{
 		return farmer.dispatchWeekly();
-		
+
 	}
 
 }
