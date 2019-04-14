@@ -2,7 +2,13 @@ package models.entity;
 
 public class Invoker {
 	
-	void placeOrder(Command command) {
+	Command command;
+	
+	public void setCommand(Command command) {
+		this.command=command;
+	}
+	
+	public String invoke(Command command) {
 		command.execute();
 	}
 

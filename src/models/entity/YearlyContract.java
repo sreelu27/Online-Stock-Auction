@@ -2,6 +2,7 @@ package models.entity;
 
 public class YearlyContract extends Contract implements Command
 {
+	Farmer farmer;
 	public YearlyContract(Bid bid)
 	{
 		super("yearlycontract"); // this is only a GSON library requirement for deserializing JSON files to java objects

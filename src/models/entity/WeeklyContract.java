@@ -1,7 +1,8 @@
 package models.entity;
 
 public class WeeklyContract extends Contract implements Command
-{
+	{
+	Farmer farmer;
     public WeeklyContract(Bid bid)
 	{
 		super("weeklycontract"); // this is only a GSON library requirement for deserializing

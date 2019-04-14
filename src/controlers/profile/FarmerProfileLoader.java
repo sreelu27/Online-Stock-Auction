@@ -15,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import models.contract.ContractService;
 import models.entity.Contract;
 import models.entity.Farmer;
+import models.entity.Invoker;
 import models.product.CareTaker;
 import models.product.OriginatorWidget;
 import models.product.ProductService;
@@ -73,11 +74,14 @@ public class FarmerProfileLoader extends HttpServlet {
 					    
 		}
 		else if(("individualContractDispatch".equals(request.getParameter("individualContractDispatch")))) {
+			String frequency1 = request.getParameter("frequency-dropdown_1");
 			String contractID = request.getParameter("contractID");
 			Contract contract = ContractService.getContractServiceInstance( getServletContext() ).getContractByID( contractID );
 			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
 			contract.setFarmer( user );
-			response.getWriter().append("{\"state\":\"success\",\"message\":\"" + contract.execute() + "\"}");
+			Invoker i=new Invoker();
+			i.setCommand(contract);
+			response.getWriter().append("{\"state\":\"success\",\"message\":\"" +i.invoke(contract) +"\"}");
 			
 		}
 		else if(("commandForm".equals(request.getParameter("formSubmit1")))) {

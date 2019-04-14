@@ -1,8 +1,8 @@
 package models.entity;
 
-public class DailyContract extends Contract
+public class DailyContract extends Contract implements Command
 {	
-	
+	Farmer farmer;
 
 	public DailyContract(Bid bid)
 	{
