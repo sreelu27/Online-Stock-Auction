@@ -6,6 +6,11 @@
   <packaging>war</packaging>
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <resources>
+        <resource>
+          <directory>libs</directory>
+        </resource>
+      </resources>
     <testSourceDirectory>test</testSourceDirectory>
     <plugins>
       <plugin>
