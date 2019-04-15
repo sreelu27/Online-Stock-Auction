@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 
+import org.apache.commons.io.FilenameUtils;
 import org.plugface.core.PluginManager;
 import org.plugface.core.factory.PluginManagers;
 import org.plugface.core.factory.PluginSources;
@@ -42,10 +43,10 @@ public class PluginInHandler
 		manager = CustomPluginManager.defaultPluginManager();
 		try
 		{
-			String fullPath = context.getRealPath("/WEB-INF/classes/");
+			String fullPath = context.getRealPath("/WEB-INF/lib/");
 			System.out.println( fullPath );
 			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
-			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
+			//manager.loadPlugins(CustomPluginSource.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath),servlet));
 			manager.loadPlugins(CustomPluginSource.jarSource("file:///E:/EE/UL/PluginJars/",servlet));
 			///OnlineStockAuction/WebContent/WEB-INF/lib
 		}
