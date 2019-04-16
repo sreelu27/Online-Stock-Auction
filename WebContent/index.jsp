@@ -21,6 +21,7 @@
 
 	<form class="form" action="LoginForm" method="post" id="loginForm">
 		<h1 class="form-title">User Login</h1>
+		<h2 class="form-title" style="color: rgba(0, 150, 128, 0.6); position=center"> Online  Bidding System</h2>
 		<input type="text" class="form-input" placeholder="Username" autofocus
 			name="username"> <input type="password" class="form-input"
 			placeholder="Password" name="password"> <input type="button"
