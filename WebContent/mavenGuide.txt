@@ -1,0 +1,5 @@
+mvn install:install-file -Dfile=c:\kaptcha-2.3.jar -DgroupId=com.google.code 
+-DartifactId=kaptcha -Dversion=2.3 -Dpackaging=jar
+
+E:\EE\UL\OnlineStockAuction\libs
+mvn install:install-file -Dfile=E:\EE\UL\OnlineStockAuction\libs\PluginInterfaces-1.2.jar -DgroupId=ul.plugin.interfaces -DartifactId=appplugins -Dversion=1.2 -Dpackaging=jar

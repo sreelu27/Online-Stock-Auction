@@ -1,13 +1,18 @@
 package pluginconfig;
 
-import java.net.URI;
+import java.util.ArrayList;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
 
 import org.apache.commons.io.FilenameUtils;
 import org.plugface.core.PluginManager;
 import org.plugface.core.factory.PluginManagers;
 import org.plugface.core.factory.PluginSources;
+
+import controllers.plugininit.CustomPluginManager;
+import controllers.plugininit.CustomPluginSource;
+import ie.ul.interfaces.Chart;
 
 
 public class PluginInHandler
@@ -21,26 +26,28 @@ public class PluginInHandler
 		
 	}
 	
-	public static PluginInHandler getInstance(ServletContext context)
+	public static PluginInHandler getInstance(ServletContext context, HttpServlet servlet)
 	{
 		if(initializer == null)
 		{
 			initializer = new PluginInHandler();
 			PluginInHandler.context = context;
-			loadPluginLibrary();
+			loadPluginLibrary(servlet);
 			
 		}
 		return initializer;
 	}
 	
-	private static void loadPluginLibrary()
+	private static void loadPluginLibrary(HttpServlet servlet)
 	{
-		manager = PluginManagers.defaultPluginManager();
+		manager = CustomPluginManager.defaultPluginManager();
 		try
 		{
 			String fullPath = context.getRealPath("/WEB-INF/lib/");
+			System.out.println( fullPath );
 			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
-			manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
+			//manager.loadPlugins(CustomPluginSource.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath),servlet));
+			manager.loadPlugins(CustomPluginSource.jarSource("file:///E:/EE/UL/PluginJars/",servlet));
 			///OnlineStockAuction/WebContent/WEB-INF/lib
 		}
 		catch ( Exception e )
@@ -53,6 +60,25 @@ public class PluginInHandler
 	public PluginManager getPluginManager()
 	{
 		return manager;
+	}
+	
+	public static void main( String[] args )
+	{
+		manager = PluginManagers.defaultPluginManager();
+		try
+		{
+//			String fullPath = context.getRealPath("/WEB-INF/lib/");
+//			System.out.println( fullPath );
+			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
+			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
+			manager.loadPlugins(PluginSources.jarSource("file:///E:/EE/UL/PluginJars/"));
+			///OnlineStockAuction/WebContent/WEB-INF/lib
+			Chart chart = manager.getPlugin(Chart.class); 
+			chart.draw( new ArrayList<>());
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
