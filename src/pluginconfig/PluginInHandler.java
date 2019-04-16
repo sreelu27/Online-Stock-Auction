@@ -10,9 +10,9 @@ import org.plugface.core.PluginManager;
 import org.plugface.core.factory.PluginManagers;
 import org.plugface.core.factory.PluginSources;
 
-import controllers.plugininit.CustomPluginManager;
-import controllers.plugininit.CustomPluginSource;
 import ie.ul.interfaces.Chart;
+import pluginconfig.util.CustomPluginManager;
+import pluginconfig.util.CustomPluginSource;
 
 
 public class PluginInHandler

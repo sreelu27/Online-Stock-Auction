@@ -19,7 +19,6 @@ public class InterceptorORBInitializer extends LocalObject implements ORBInitial
 		{
 			interceptor = new CustomClientInterceptor();
 			info.add_client_request_interceptor( interceptor );
-			//info.add_server_request_interceptor( interceptor );
 		}
 		catch ( Exception ex )
 		{
