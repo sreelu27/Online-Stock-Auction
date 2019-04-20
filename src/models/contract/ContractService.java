@@ -182,7 +182,7 @@ public class ContractService extends EntityService
 		return getGson().toJson(paidFarmerContracts);
        }
        else {
-    	   return "No contracts";
+    	   return getGson().toJson(paidFarmerContracts);
        }
 	}
 }

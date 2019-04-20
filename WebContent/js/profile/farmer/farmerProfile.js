@@ -42,6 +42,11 @@ $( document ).ready(function() {
 			data: submitCommandForm.serialize(),
 			success: function (data) 
 			{
+				if(data == 'no_contracts')
+				{
+					$('#searchResults').html('');
+					alert('No Contracts for this category..!');									
+				}
 				
 				$('#searchResults').html('');
 				$.each(data,function(key,value)
@@ -65,7 +70,7 @@ $( document ).ready(function() {
 							url: individualBidForm.attr('action'),
 							data: individualBidForm.serialize(),
 							success: function (data) 
-							{
+							{								
 								alert(data.message);
 							}
 						});		 

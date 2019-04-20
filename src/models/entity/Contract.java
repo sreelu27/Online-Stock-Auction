@@ -13,7 +13,7 @@ import models.report.IReportStructure;
 import models.report.PDFCell;
 import models.report.PDFTable;
 
-public abstract class Contract implements IReportStructure,Command
+public abstract class Contract implements IReportStructure
 {
 	private long farmerUserID;
 	private long retailerUserID;
