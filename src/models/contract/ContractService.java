@@ -127,6 +127,8 @@ public class ContractService extends EntityService
 			Type listType = new TypeToken<List<Contract>>(){}.getType();
 			List<Contract> fromJson = gson.fromJson(json, listType);
 	}
+	//Author:Sreelekshmi Geetha
+	//Fetch the contract
 
 	public Contract getContractByID( String selectedContractID )
 	{
@@ -161,6 +163,10 @@ public class ContractService extends EntityService
 	}
 	
 	@SuppressWarnings("unlikely-arg-type")
+	
+	//Author:Sreelekshmi Geetha
+	//Displays the contracts list for farmer which are paid by the retailer.
+	
 	public String getPaidContractsForFarmerDispatch(long farmerID, String frequency)
 	{
 		List<Contract> paidFarmerContracts = new ArrayList<>();
@@ -172,8 +178,12 @@ public class ContractService extends EntityService
 				paidFarmerContracts.add(contract);
 				
 			}
-       }
+       }if(!paidFarmerContracts.isEmpty()) {
 		return getGson().toJson(paidFarmerContracts);
+       }
+       else {
+    	   return "No contracts";
+       }
 	}
 }
 
