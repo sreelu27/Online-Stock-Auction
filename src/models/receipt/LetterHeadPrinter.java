@@ -12,6 +12,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 
 import models.report.IReportStructure;
 import models.report.PDFStructure;
+import models.report.ReportCreator;
 import models.report.ReportService;
 
 public class LetterHeadPrinter
@@ -46,7 +47,7 @@ public class LetterHeadPrinter
 		};
 		try
 		{
-			ReportService.getReportServiceInstance().printDocument( doc, "PDF", response );
+			ReportService.getReportServiceInstance(ReportCreator.getReportFactory()).printDocument( doc, "PDF", response );
 		}
 		catch ( IOException e )
 		{

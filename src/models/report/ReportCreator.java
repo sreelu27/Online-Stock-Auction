@@ -9,7 +9,7 @@ public class ReportCreator extends AbstractReportCreator
 		
 	}
 	
-	public static AbstractReportCreator getReportServiceInstance() 
+	public static AbstractReportCreator getReportFactory() 
 	{
 		if(instance == null)
 		{
