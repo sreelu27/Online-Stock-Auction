@@ -13,7 +13,7 @@ public class ReportCreator extends AbstractReportCreator
 	{
 		if(instance == null)
 		{
-			instance = new ReportCreator();
+			instance = new ReportCreator();//
 		}
 		return instance;
 	}

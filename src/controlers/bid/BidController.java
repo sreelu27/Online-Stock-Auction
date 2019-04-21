@@ -67,6 +67,7 @@ public class BidController extends HttpServlet {
 			Bid bid = BiddingService.getBiddingServiceInstance(LoginService.getServeletContext()).getBid(selctedBidId);
 			Contract contract = ContractService.getContractServiceInstance(getServletContext()).createContract(bid);
 			String message = ReportService.getReportServiceInstance(ReportCreator.getReportFactory()).printDocument(contract, "PDF", response);
+			
 			if( !message.equals( "" ))
 			{
 				response.setContentType("application/json");
