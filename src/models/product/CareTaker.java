@@ -23,6 +23,7 @@ public class CareTaker {
 		{
 			ProductOriginator o = (ProductOriginator) originatorStack.pop();
 			o.restore((Memento) mementoStack.pop());
+			System.out.println("Originator: State after restoring from Memento#####: " + mementoStack.peek());
 		}
 		else
 		{
