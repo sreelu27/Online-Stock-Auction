@@ -1,5 +1,7 @@
 package controlers.profile;
-
+//Author:Sreelekshmi Geetha
+//Design Pattern:Command
+//Client
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -74,12 +76,15 @@ public class FarmerProfileLoader extends HttpServlet {
 					    
 		}
 		else if(("individualContractDispatch".equals(request.getParameter("individualContractDispatch")))) {
-			String frequency1 = request.getParameter("frequency-dropdown_1");
+			
 			String contractID = request.getParameter("contractID");
+			//Client creates a Concrete Command instance
 			Contract contract = ContractService.getContractServiceInstance( getServletContext() ).getContractByID( contractID );
 			Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));	
+			//Client sets the receiver which is the farmer
 			contract.setFarmer( user );
 			Invoker i=new Invoker();
+			//Client registers command with the invoker
 			i.setCommand(contract);
 			response.getWriter().append("{\"state\":\"success\",\"message\":\"" +i.invoke(contract) +"\"}");
 			

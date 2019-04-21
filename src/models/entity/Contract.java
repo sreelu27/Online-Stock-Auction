@@ -1,4 +1,7 @@
 package models.entity;
+//Author:Sreelekshmi Geetha
+//Design Pattern:Command
+//Concrete Command
 
 import java.util.Date;
 
@@ -10,7 +13,7 @@ import models.report.IReportStructure;
 import models.report.PDFCell;
 import models.report.PDFTable;
 
-public abstract class Contract implements IReportStructure,Command
+public abstract class Contract implements IReportStructure
 {
 	private long farmerUserID;
 	private long retailerUserID;
@@ -144,7 +147,7 @@ public abstract class Contract implements IReportStructure,Command
 	{
 		return farmer;
 	}
-
+//Command
 	public void setFarmer( Farmer farmer )
 	{
 		this.farmer = farmer;
