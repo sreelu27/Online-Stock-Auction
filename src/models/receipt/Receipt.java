@@ -17,7 +17,7 @@ public abstract class Receipt
 	
 	public abstract void print();
 	
-	protected void printReceiptToQRCode(Map<String,String> data,HttpServletResponse response)
+	protected void printReceiptToQRCode(Map<String,String> data,HttpServletResponse response)// type of data to be printed
 	{
 		printing.printReceiptToQRCode( data,response );
 	}

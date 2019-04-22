@@ -18,7 +18,7 @@ public class QRCodeReceipt extends Receipt
 	@Override
 	public void print()
 	{
-		printReceiptToQRCode( data ,response);
+		printReceiptToQRCode( data ,response);// calling from the implementor methods 
 	}
 
 }
