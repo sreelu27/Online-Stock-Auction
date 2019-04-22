@@ -83,6 +83,7 @@ public class AdminProfileLoader extends HttpServlet {
 		}
 		else if("generateReport".equals(request.getParameter("formSubmit"))) 
 		{
+			//Pluggable Adapter 
 			DataExport export = new EmailDataExportAdapter(new EmailExpoter());
 			List<String> emailList = new ArrayList<>();
 			export.exportData(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")),emailList);

@@ -80,11 +80,17 @@ $( document ).ready(function() {
 				    	individualBidForm.submit();
 				    });
                 });
+				if( $('#searchResults').is(':empty') )
+				{
+					$('#searchResults').html('');
+				    alert('No contracts for this category');
+				}
 			}
 		});		 
 		return false;
 	});
     $( "#showProductContracts" ).click(function() {
+    	$('#searchResults').html('');
     	submitCommandForm.submit();
     });
 });
