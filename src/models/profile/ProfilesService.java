@@ -112,7 +112,7 @@ public class ProfilesService extends EntityService
 		return message;
 	}
 	
-	public User getProfile( String username )
+	/*public User getProfile( String username )
 	{
 		for(User profile : profiles)
 		{
@@ -122,6 +122,12 @@ public class ProfilesService extends EntityService
 			}
 		}
 		return null;
+	}*/
+	
+	public User getProfile( String username )
+	{
+		return profiles.stream().filter(item -> item.getUsername().equals(username))
+			       .findFirst().orElse(null);
 	}
 	
 	public static User getProfile( long userID )
@@ -135,6 +141,23 @@ public class ProfilesService extends EntityService
 		}
 		return null;
 	}
+	
+	/*public static User getProfile( long userID )
+	{
+		return profiles.stream().filter(item -> item.getUserID() ==  userID)
+			       .findFirst().orElse(null);
+	}*/
+	
+	/*User method(long userID)
+	{
+		return profiles.stream().filter(item -> item.getUserID() ==  userID)
+	       .findFirst().orElse(null);
+	}*/
+	
+	/*data.forEach((k,v)->{
+		System.out.println("Item : " + k + " Count : " + v);
+		
+	});*/
 	
 	public String validLogin(String username, String password)
 	{
