@@ -81,7 +81,7 @@ public class AdminProfileLoader extends HttpServlet {
 			response.getWriter().append("{\"state\":\"Success\",\"message\":\"Export to emails successfully..!!\",\"page\":\""+user.getUsername()+"\",\"id\":"+user.getUserID()+"}");
 		}
 		//chartSubmit
-		else if("chartSubmit".equals(request.getParameter("generateChart"))) 
+		else if("generateChart".equals(request.getParameter("chartSubmit"))) 
 		{
 			try
 			{

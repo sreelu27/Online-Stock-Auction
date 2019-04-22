@@ -22,6 +22,26 @@ $( document ).ready(function() {
     $( "#generate_contract_report" ).click(function() {
     	acceptBidForm.submit();
     });
+var chartForm = $('#submitChartForm');
+    
+chartForm.submit(function (e) 
+    		{	
+    			$.ajax(
+    			{
+    				type: chartForm.attr('method'),
+    				url: chartForm.attr('action'),
+    				data: chartForm.serialize(),
+    				success: function (data) 
+    				{
+    					alert(data.message);
+    				}
+    			});		 
+    			return false;
+    		});
+    $( "#generate_Chart" ).click(function() {
+    	chartForm.submit();
+    });
+    generate_Chart
 });
 function openCity(evt, eventName) {
     var i, tabcontent, tablinks;
