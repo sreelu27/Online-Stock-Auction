@@ -28,7 +28,7 @@ public class ReportCreator extends AbstractReportCreator
 		}
 		else if(type.equals( "XL" ))
 		{
-			report = new ExcelReport();
+			report = new ExcelReport();// excel
 		}
 		else
 		{

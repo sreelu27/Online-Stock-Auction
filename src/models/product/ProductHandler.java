@@ -32,7 +32,8 @@ public class ProductHandler {
 	public List<String> getProductList() {
 		products =new ArrayList<String>();
 		for (Object item: mementoStack) {
-			products.add(((WidgetMemento)item).getState());
+			String [] arrOfStr = ((WidgetMemento)item).getState().split("#");
+			products.add(arrOfStr[0]);
 			
 		}
 		

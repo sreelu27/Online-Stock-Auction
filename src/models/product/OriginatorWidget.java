@@ -9,7 +9,8 @@ public class OriginatorWidget implements ProductOriginator{
 	}
 
 	public void setValue(String value) {
-		System.out.println("Originator: Setting state to " + value);
+		String [] arrOfStr = (value.split("#"));
+		System.out.println("Originator: Setting state to " + arrOfStr[0]);
 		this.value = value;
 	}
 

@@ -121,7 +121,7 @@ public class ProductStockService extends EntityService
 				if(stock.getProductStockID() == Long.parseLong( arrOfStr[1] ))
 				{
 					tobeRemoved = stock;				
-					System.out.println( "Removed the product stock" );
+					System.out.println( "Removed the product from the Product Stock" );
 				}
 			}
 			productStock.remove( tobeRemoved );

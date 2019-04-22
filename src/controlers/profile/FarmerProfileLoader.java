@@ -128,7 +128,7 @@ public class FarmerProfileLoader extends HttpServlet {
 				{
 					response.getWriter().append("{\"state\":\"Undo process done sucessfully..!!\"}");
 				}				
-				//System.out.println(c.getWidgetValue());
+				
 			}
 			else {
 				
@@ -136,7 +136,6 @@ public class FarmerProfileLoader extends HttpServlet {
 				String id=Long.toString(user.getUserID());
 				long productstockId = ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price);
 				c.setWidgetValue((ProductService.getProductServiceInstance(getServletContext()).getProductByID(selectedProduct))+"#"+productstockId);
-				//System.out.println(c.getWidgetValue());
 				response.getWriter().append("{\"state\":\"Product Stock addded successfully..\"}");
 			}
 				
