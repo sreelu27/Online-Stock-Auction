@@ -141,23 +141,6 @@ public class ProfilesService extends EntityService
 		return null;
 	}
 	
-	/*public static User getProfile( long userID )
-	{
-		return profiles.stream().filter(item -> item.getUserID() ==  userID)
-			       .findFirst().orElse(null);
-	}*/
-	
-	/*User method(long userID)
-	{
-		return profiles.stream().filter(item -> item.getUserID() ==  userID)
-	       .findFirst().orElse(null);
-	}*/
-	
-	/*data.forEach((k,v)->{
-		System.out.println("Item : " + k + " Count : " + v);
-		
-	});*/
-	
 	public String validLogin(String username, String password)
 	{
 		User user = getProfile( username );
