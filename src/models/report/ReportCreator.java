@@ -26,6 +26,10 @@ public class ReportCreator extends AbstractReportCreator
 		{
 			report = new PDFReport();
 		}
+		else if(type.equals( "XL" ))
+		{
+			report = new ExcelReport();
+		}
 		else
 		{
 			throw new ReportTypeIsNotImplemented();
