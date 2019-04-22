@@ -18,7 +18,7 @@ import models.contract.ContractService;
 import models.entity.Contract;
 import models.entity.Farmer;
 import models.entity.Invoker;
-import models.product.CareTaker;
+import models.product.ProductHandler;
 import models.product.OriginatorWidget;
 import models.product.ProductService;
 import models.product.ProductStockService;
@@ -32,7 +32,7 @@ public class FarmerProfileLoader extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	OriginatorWidget o = new OriginatorWidget();
-	CareTaker c = new CareTaker();
+	ProductHandler c = new ProductHandler();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -119,16 +119,25 @@ public class FarmerProfileLoader extends HttpServlet {
 			if ("undobutton_clicked".equals(request.getParameter("undobutton"))) {
 				
 				c.undoOperation();
-				System.out.println(c.getWidgetValue());
-				response.getWriter().append("{\"state\":\"Undo process done sucessfully..!!\"}");
+				ProductStockService.getProductStockServiceInstance(getServletContext()).removeProductStock(c.getWidgetValue());
+				if(c.getWidgetValue().equals( "" ))
+				{
+					response.getWriter().append("{\"state\":\"Empty stack!!\"}");
+				}
+				else
+				{
+					response.getWriter().append("{\"state\":\"Undo process done sucessfully..!!\"}");
+				}				
+				//System.out.println(c.getWidgetValue());
 			}
 			else {
 				
 				Farmer user = (Farmer)ProfilesService.getProfileServiceInstance(getServletContext()).getProfile((String)session.getAttribute("username"));
 				String id=Long.toString(user.getUserID());
-				c.setWidgetValue((ProductService.getProductServiceInstance(getServletContext()).getProductByID(selectedProduct)));
-				System.out.println(c.getWidgetValue());
-				response.getWriter().append(ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price));
+				long productstockId = ProductStockService.getProductStockServiceInstance(getServletContext()).addProductStock(selectedProduct, quantity, frequency, id, price);
+				c.setWidgetValue((ProductService.getProductServiceInstance(getServletContext()).getProductByID(selectedProduct))+"#"+productstockId);
+				//System.out.println(c.getWidgetValue());
+				response.getWriter().append("{\"state\":\"Product Stock addded successfully..\"}");
 			}
 				
 		}

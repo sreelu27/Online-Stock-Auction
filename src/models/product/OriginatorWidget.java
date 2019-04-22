@@ -25,7 +25,8 @@ public class OriginatorWidget implements ProductOriginator{
 	public void restore(Memento m) {
 		WidgetMemento wm =(WidgetMemento) m;
 		this.value=(wm.getState());
-		//System.out.println("Originator: State after restoring from Memento: " + wm.getState());
+		
+		
 	}
 
 	

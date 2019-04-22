@@ -38,8 +38,9 @@ public class ProductStockService extends EntityService
 		}
 		return instance;
 	}
-	public String addProductStock(String name,String quantity,String frequency,String farmerID, String price) {
+	public long addProductStock(String name,String quantity,String frequency,String farmerID, String price) {
 		
+		long productstockId = RandomNumberGenerator.getLongID() ;
 		
 		ProductStock productStockObj=new ProductStock();
 		
@@ -55,10 +56,10 @@ public class ProductStockService extends EntityService
 		productStockObj.setProduct(prod);
 		productStockObj.setUnitPrice(unitPrice);
 		productStockObj.setFarmerID( id );
-		productStockObj.setProductStockID( RandomNumberGenerator.getLongID() );
+		productStockObj.setProductStockID( productstockId );
 		productStockObj.setPriority( farmer.getPriorityLevel() );
 		productStock.add(productStockObj);
-		return "{\"state\":\"Product Stock addded successfully..\"}";
+		return productstockId;
 		
 
 	}
@@ -106,5 +107,24 @@ public class ProductStockService extends EntityService
 		}
 		TypeToken<List<ProductStock>> token = new TypeToken<List<ProductStock>>() {};
 		productStock = getGson().fromJson(new InputStreamReader(getIs()), token.getType());
+	}
+
+	public void removeProductStock( String productStockId )
+	{
+		if(productStockId.length() != 0)
+		{
+			String [] arrOfStr = productStockId.split("#"); 
+			ProductStock tobeRemoved = null;
+			for(ProductStock stock : productStock)
+			{
+				
+				if(stock.getProductStockID() == Long.parseLong( arrOfStr[1] ))
+				{
+					tobeRemoved = stock;				
+					System.out.println( "Removed the product stock" );
+				}
+			}
+			productStock.remove( tobeRemoved );
+		}		
 	}
 }
