@@ -47,6 +47,10 @@
 						<input type="button" id="generate_contract_report" value="Generate Report" class="input_class"/>
 	  </form>
   </div>
+  <form method="post" action="../../../AdminProfileLoaderRequest" id="submitChartForm">	
+				        <input type="hidden" id="chartSubmit" name="chartSubmit" value="generateChart">
+						<input type="button" id="generate_Chart" value="Generate Chart" class="input_class"/>
+	  </form>
 </div>
 
 

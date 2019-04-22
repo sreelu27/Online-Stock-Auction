@@ -54,16 +54,7 @@ public class AdminProfileLoader extends HttpServlet {
 		String username = (String)session.getAttribute("username");
 		String event =  request.getParameter("tabEvent");
 		String disableProduct =  request.getParameter("disableProduct");
-		try
-		{
-			PluginManager pluginManager = PluginInHandler.getInstance(getServletContext(),this).getPluginManager();
-			Chart chart = pluginManager.getPlugin(Chart.class); 
-			chart.draw( new ArrayList<>());
-		}
-		catch ( Exception e )
-		{
-			e.printStackTrace();
-		}
+		
 		
 		response.setContentType("application/json");
 		ProductService.getProductServiceInstance( getServletContext() );		
@@ -88,6 +79,20 @@ public class AdminProfileLoader extends HttpServlet {
 			List<String> emailList = new ArrayList<>();
 			export.exportData(ContractService.getContractServiceInstance(getServletContext()).getContractsPerFrequency(request.getParameter("frequency-dropdown")),emailList);
 			response.getWriter().append("{\"state\":\"Success\",\"message\":\"Export to emails successfully..!!\",\"page\":\""+user.getUsername()+"\",\"id\":"+user.getUserID()+"}");
+		}
+		//chartSubmit
+		else if("chartSubmit".equals(request.getParameter("generateChart"))) 
+		{
+			try
+			{
+				PluginManager pluginManager = PluginInHandler.getInstance(getServletContext(),this).getPluginManager();
+				Chart chart = pluginManager.getPlugin(Chart.class); 
+				chart.draw( new ArrayList<>());
+			}
+			catch ( Exception e )
+			{
+				e.printStackTrace();
+			}
 		}
 		else
 		{		
