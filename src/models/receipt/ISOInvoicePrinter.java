@@ -10,9 +10,7 @@ public class ISOInvoicePrinter
 	{
 		data.forEach((k,v)->{
 			System.out.println("Item : " + k + " Count : " + v);
-			if("E".equals(k)){
-				System.out.println("Hello E");
-			}
+			
 		});
 	}
 	
@@ -20,9 +18,7 @@ public class ISOInvoicePrinter
 	{
 		data.forEach((k,v)->{
 			System.out.println("Item : " + k + " Count : " + v);
-			if("E".equals(k)){
-				System.out.println("Hello E");
-			}
+			
 		});
 	}
 }

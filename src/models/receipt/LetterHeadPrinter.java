@@ -60,9 +60,7 @@ public class LetterHeadPrinter
 	{
 		data.forEach((k,v)->{
 			System.out.println("Item : " + k + " Count : " + v);
-			if("E".equals(k)){
-				System.out.println("Hello E");
-			}
+			
 		});
 	}
 }

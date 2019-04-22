@@ -47,7 +47,7 @@ public class PluginInHandler
 			System.out.println( fullPath );
 			//manager.loadPlugins(PluginSources.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath)));
 			//manager.loadPlugins(CustomPluginSource.jarSource("file:///"+FilenameUtils.separatorsToUnix(fullPath),servlet));
-			manager.loadPlugins(CustomPluginSource.jarSource("file:///C:/PluginArchi/",servlet));
+			manager.loadPlugins(CustomPluginSource.jarSource("file:///E:/EE/UL/PluginJars/",servlet));
 			///OnlineStockAuction/WebContent/WEB-INF/lib
 		}
 		catch ( Exception e )
