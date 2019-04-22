@@ -126,8 +126,7 @@ public class ProfilesService extends EntityService
 	
 	public User getProfile( String username )
 	{
-		return profiles.stream().filter(item -> item.getUsername().equals(username))
-			       .findFirst().orElse(null);
+		return profiles.stream().filter(item -> item.getUsername().equals(username)).findFirst().orElse(null);
 	}
 	
 	public static User getProfile( long userID )

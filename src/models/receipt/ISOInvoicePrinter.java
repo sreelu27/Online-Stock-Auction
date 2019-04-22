@@ -8,17 +8,11 @@ public class ISOInvoicePrinter
 {
 	public static void printISOReceiptWithQRCode(Map<String,String> data,HttpServletResponse response)
 	{
-		data.forEach((k,v)->{
-			System.out.println("Item : " + k + " Count : " + v);
-			
-		});
+		// Part to implement when ISO Printing is considered for QR code
 	}
 	
 	public static void printISOReceiptWithBarcode(Map<String,String> data,HttpServletResponse response)
 	{
-		data.forEach((k,v)->{
-			System.out.println("Item : " + k + " Count : " + v);
-			
-		});
+		// Part to implement when ISO Printing is considered for Bar code
 	}
 }

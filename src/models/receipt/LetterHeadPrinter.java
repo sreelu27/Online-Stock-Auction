@@ -58,9 +58,6 @@ public class LetterHeadPrinter
 	
 	public static void printDocumentWithBarcode(Map<String,String> data,HttpServletResponse response)
 	{
-		data.forEach((k,v)->{
-			System.out.println("Item : " + k + " Count : " + v);
-			
-		});
+		
 	}
 }
