@@ -23,6 +23,7 @@ public class LetterHeadPrinter
 		{
 			
 			@Override
+			// layout
 			public String getHeader()
 			{
 				return data.get( PDFStructure.HEAD.name() );
@@ -37,6 +38,7 @@ public class LetterHeadPrinter
 			@Override
 			public PdfPTable getBody( PdfPTable table )
 			{
+				// the place we can integrate QR code generaton framework and add the QR image.
 				PdfPCell header = new PdfPCell(new Phrase("CONTRACT DETAILS"));
 				header.setRowspan(1);
 				header.setHorizontalAlignment(Element.ALIGN_CENTER);

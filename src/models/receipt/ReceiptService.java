@@ -37,6 +37,7 @@ public class ReceiptService
 			data.put( PDFStructure.FOOTER.name(), String.valueOf("FINAL AGREED PRICE : "+contract.getAgreedBid().getAgreedFinalPrice() ));
 			data.put( PDFStructure.HEAD.name()	, "RECEIPT ISSUED DATE : "+new Date().toString());
 			receipt = new QRCodeReceipt( printing, data,response );
+			// genrate the refined abstarction class which is now is the QRCodeReceipt
 		}
 		return receipt;
 	}

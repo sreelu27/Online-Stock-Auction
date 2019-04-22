@@ -11,6 +11,7 @@ public class PDFReport implements IReport
 	@Override
 	public void generateReport( Object table,HttpServletResponse response )
 	{
+		// this is the place we really create PDF files and dispatch to the browser
 		Document document = null;
 		try 
 		{

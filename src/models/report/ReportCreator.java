@@ -21,7 +21,7 @@ public class ReportCreator extends AbstractReportCreator
 	@Override
 	public IReport reportCreator( String type ) throws ReportTypeIsNotImplemented
 	{
-		IReport report = null;
+		IReport report = null; // which ever class implementing IReport can return a concrete product
 		if(type.equals( "PDF" ))
 		{
 			report = new PDFReport();
