@@ -1,4 +1,4 @@
-package controllers.plugininit;
+package pluginconfig.util;
 
 import java.io.File;
 import java.io.IOException;

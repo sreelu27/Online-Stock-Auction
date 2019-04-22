@@ -112,7 +112,7 @@ public class ProfilesService extends EntityService
 		return message;
 	}
 	
-	public User getProfile( String username )
+	/*public User getProfile( String username )
 	{
 		for(User profile : profiles)
 		{
@@ -122,6 +122,11 @@ public class ProfilesService extends EntityService
 			}
 		}
 		return null;
+	}*/
+	
+	public User getProfile( String username )
+	{
+		return profiles.stream().filter(item -> item.getUsername().equals(username)).findFirst().orElse(null);
 	}
 	
 	public static User getProfile( long userID )

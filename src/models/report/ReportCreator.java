@@ -9,11 +9,11 @@ public class ReportCreator extends AbstractReportCreator
 		
 	}
 	
-	public static AbstractReportCreator getReportServiceInstance() 
+	public static AbstractReportCreator getReportFactory() 
 	{
 		if(instance == null)
 		{
-			instance = new ReportCreator();
+			instance = new ReportCreator();//
 		}
 		return instance;
 	}

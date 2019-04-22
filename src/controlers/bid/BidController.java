@@ -19,6 +19,7 @@ import models.login.LoginService;
 import models.notification.NotificationService;
 import models.product.ProductStockService;
 import models.profile.ProfilesService;
+import models.report.ReportCreator;
 import models.report.ReportService;
 
 /**
@@ -65,7 +66,8 @@ public class BidController extends HttpServlet {
 			long selctedBidId = Long.valueOf(selectedBidID);
 			Bid bid = BiddingService.getBiddingServiceInstance(LoginService.getServeletContext()).getBid(selctedBidId);
 			Contract contract = ContractService.getContractServiceInstance(getServletContext()).createContract(bid);
-			String message = ReportService.getReportServiceInstance().printDocument(contract, "PDF", response);
+			String message = ReportService.getReportServiceInstance(ReportCreator.getReportFactory()).printDocument(contract, "PDF", response);
+			
 			if( !message.equals( "" ))
 			{
 				response.setContentType("application/json");

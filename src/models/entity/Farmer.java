@@ -1,5 +1,9 @@
 package models.entity;
 
+//Author:Sreelekshmi Geetha
+//Design Pattern:Command
+//Receiver
+
 public class Farmer extends User
 {
 	String farmAddress;
@@ -62,6 +66,7 @@ public class Farmer extends User
 	{
 		return productsInvolved;
 	}	
+//Performs application specific operations
 	
 	public String dispatchDaily() {
 		System.out.println("Delivery of daily contract is in progress!!!");

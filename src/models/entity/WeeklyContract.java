@@ -1,4 +1,7 @@
 package models.entity;
+//Author:Sreelekshmi Geetha
+//Design Pattern:Command
+//Concrete Command
 
 public class WeeklyContract extends Contract implements Command
 {

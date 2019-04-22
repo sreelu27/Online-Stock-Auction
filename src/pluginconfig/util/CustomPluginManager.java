@@ -1,4 +1,4 @@
-package controllers.plugininit;
+package pluginconfig.util;
 
 import org.plugface.core.PluginContext;
 import org.plugface.core.PluginManager;

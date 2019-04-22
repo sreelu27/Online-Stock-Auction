@@ -17,12 +17,12 @@ public class ReportService
 		
 	}
 	
-	public static ReportService getReportServiceInstance() 
+	public static ReportService getReportServiceInstance(AbstractReportCreator creator) 
 	{
 		if(reportService == null)
 		{
 			reportService = new ReportService();
-			reportCreator = ReportCreator.getReportServiceInstance();
+			reportCreator = creator;
 		}
 		return reportService;
 	}	

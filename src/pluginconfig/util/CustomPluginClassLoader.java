@@ -1,4 +1,4 @@
-package controllers.plugininit;
+package pluginconfig.util;
 
 import java.io.IOException;
 import java.net.JarURLConnection;
